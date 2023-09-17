@@ -1,0 +1,115 @@
+
+
+
+#media-user {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.headlogo {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: start;
+  font-family: 'Open Sans', sans-serif;
+  border-bottom: 2px solid rgba(233, 232, 232, 0.395);
+}
+
+.contacts {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: start;
+  justify-content: start;
+}
+.contacts p {
+  padding: 0;
+  margin: 0;
+}
+
+.imglogo {
+  padding: 5px 10px;
+}
+.imglogo img {
+  width: 35px;
+  height: 40px;
+}
+
+.namelogo {
+ margin-left: 15px;
+ margin-top: 11px;
+ font-size: 0.8em;
+ font-weight: 400;
+}
+
+/* --------- button animation --------- */
+
+.pulsingButton {
+  width: 220px;
+  text-align: center;
+  white-space: nowrap;
+  display: block;
+  margin: 100px auto;
+  padding: 10px;
+  box-shadow: 0 0 0 0 rgba(232, 75, 61, 0.312);
+  border-radius: 10px;
+  background-color: #ef1818c8;
+  -webkit-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  font-size: 22px;
+  font-weight: normal;
+  font-family: sans-serif;
+  text-decoration: none !important;
+  color: #ffffff;
+  transition: all 300ms ease-in-out;
+}
+
+
+/* Comment-out to have the button continue to pulse on mouseover */
+
+.pulsingButton:hover {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  animation: none;
+  color: #ffffff;
+}
+
+
+/* Animation */
+
+@-webkit-keyframes pulsing {
+  to {
+    box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+  }
+}
+
+@-moz-keyframes pulsing {
+  to {
+    box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+  }
+}
+
+@-ms-keyframes pulsing {
+  to {
+    box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+  }
+}
+
+@keyframes pulsing {
+  to {
+    box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+  }
+}
+
+.pulsingButton:active {
+  transform: scale(0.92);
+}
+
+
+
+/* ----------------------------- */
+
