@@ -15,5 +15,27 @@ export interface Variant {
 }
 export interface StepsSelectData {
     idForm: string;
-    variants: Variant[]
+    variants: Variant[];
+}
+
+
+export interface Variant5 {
+    imgSrc: string;
+    titleRadioGroup: string;
+    nameRadioGroup: string;
+    radios: string[];
+}
+
+export interface StepsSelectData5 {
+    idForm: string;
+    variants: Variant5[];
+}
+
+
+export interface StepsFormSity {
+    imgSrc ?: string;
+    idForm: string,
+    titleInput: string;
+    nameInput: string;
+    idInput: string;
 }

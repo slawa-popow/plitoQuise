@@ -1,7 +1,33 @@
 import { StepsSelectData } from "../types/stepsT";
 
 
+export function disableButton(btn: HTMLButtonElement | null, isDisable: boolean = true) {
+    if (btn) {
+        if (isDisable) {
+            btn.classList.remove('button-nav-disable-false', 'button-nav-disable-false:focus');
+            btn.classList.add('button-nav-disable-true');
+            
+        } else {
+            btn.classList.remove('button-nav-disable-true')
+            btn.classList.add('button-nav-disable-false', 'button-nav-disable-false:focus') ;
+            
+        }
+                       
+        
+        btn.disabled = isDisable;
+    }
+}
+
+
+export function setTitleStep(title: string = '') {
+    const ptitle = document.getElementById('titleStep');
+    ptitle!.textContent = title;
+}
+
+
+
 export function domStep1(domData: StepsSelectData): HTMLFormElement {
+   
     const form = document.createElement('form');
     form.setAttribute('id', domData.idForm);
 

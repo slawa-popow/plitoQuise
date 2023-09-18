@@ -1,4 +1,4 @@
-import { domStep1 } from "../domManip/domStep1";
+import { domStep1, setTitleStep } from "../domManip/domStep1";
 import { StepsSelectData } from "../types/stepsT";
 import { Step } from "./Step";
 
@@ -123,14 +123,17 @@ export class Step3 extends Step {
         this.button = button;
         this.title = title;
         this.isFirst = isFirst;
-        this.stepData = {}
+        this.stepData = {};
         this.nameStep = nameStep;
     }
 
     step(): void {
         this.clearContainer();
+        setTitleStep();
         this.form = domStep1(this.domData);
+        setTitleStep(this.title);
         this.fillContainer(this.form);
+        this.checkedBack();
     }
 
     selectData(): void {

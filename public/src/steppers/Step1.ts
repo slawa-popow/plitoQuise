@@ -1,4 +1,4 @@
-import { domStep1 } from "../domManip/domStep1";
+import { domStep1, setTitleStep } from "../domManip/domStep1";
 import { StepsSelectData } from "../types/stepsT";
 import { Step } from "./Step";
 
@@ -7,6 +7,7 @@ export class Step1 extends Step {
     RADIO_NAME = "step-1";
 
     domData: StepsSelectData = {
+        
         idForm: 'form-step-1',
         variants: [
             {
@@ -81,11 +82,15 @@ export class Step1 extends Step {
 
     step(): void {
         this.clearContainer();
+        setTitleStep();
         this.form = domStep1(this.domData);
+        setTitleStep(this.title);
         this.fillContainer(this.form);
+        this.checkedBack();
     }
 
     selectData(): void {
+        
          if (this.form) {
             for (let el of this.form.elements) {
                 if (el instanceof HTMLInputElement && el.type === "radio" ) {
