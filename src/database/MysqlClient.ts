@@ -2,7 +2,7 @@ import mysql, { ResultSetHeader } from 'mysql2/promise';
 import { Pool } from "mysql2/promise";
  
 import dotenv from 'dotenv';
-import { DbClient } from '../types/dbT';
+import { Admins, DbClient } from '../types/dbT';
 import { QuizeSendData } from '../types/appT';
 
 
@@ -11,6 +11,7 @@ dotenv.config();
 export enum Table {
     Clients='clients',
     Quize='quize',
+    Admins='managers'
 };
 
 class MysqlClient implements DbClient {
@@ -57,6 +58,45 @@ class MysqlClient implements DbClient {
         return false;
     
     }
+
+
+    async getManagers(): Promise<Admins[]> {
+        const connection = await this.pool!.getConnection();
+
+        try {
+            if (connection) {
+                const [_res, _serv] = await connection.query(`SELECT telegram_id FROM ${Table.Admins};`);
+                const res = _res as Admins[];
+                await connection.commit();  
+                return res;
+            }
+
+        } catch (e) { console.log('Error in MySqlAgent->getManagers()->catch', e) } 
+        finally {
+            connection.release();
+        }
+        return [];
+    }
+
+
+    async getRowData(rowId: string): Promise<QuizeSendData[]> {
+        const connection = await this.pool!.getConnection();
+
+        try {
+            if (connection) {
+                const [_res, _serv] = await connection.query(`SELECT * FROM ${Table.Quize} WHERE id='${rowId}';`);
+                const res = _res as QuizeSendData[];
+                await connection.commit();  
+                return res;
+            }
+
+        } catch (e) { console.log('Error in MySqlAgent->getRowData()->catch', e) } 
+        finally {
+            connection.release();
+        }
+        return [];
+    }
+
 // 38
     async writeQuizData(data: QuizeSendData): Promise<string[]> {
         const connection = await this.pool!.getConnection();
@@ -120,7 +160,7 @@ class MysqlClient implements DbClient {
                 return ['' + res.insertId];
             }
 
-        } catch (e) { console.log('Error in MySqlAgent->setTestData()->catch', e) } 
+        } catch (e) { console.log('Error in MySqlAgent->writeQuizData()->catch', e) } 
         finally {
             connection.release();
         }

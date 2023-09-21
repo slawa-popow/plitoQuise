@@ -5,5 +5,11 @@ export interface DbClient {
 
     checkClient(uidClient: string): Promise<boolean>;
     writeQuizData(data: QuizeSendData): Promise<string[]>;
+    getRowData(rowId: string): Promise<QuizeSendData[]>;
+    getManagers(): Promise<Admins[]>;
+}
 
+
+export interface Admins {
+    telegram_id: string;
 }

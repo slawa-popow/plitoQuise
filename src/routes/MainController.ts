@@ -1,9 +1,13 @@
 import { Request, Response } from 'express';
 import { QuizeSendData } from '../types/appT';
 import { db } from '../database/db';
+import { telegram } from './telegram';
+
 
 
 class MainController {
+
+    
 
     async getIndexPage(_request: Request, response: Response) {
 
@@ -31,6 +35,7 @@ class MainController {
             data.clients_id = new Date().getTime().toString(16);
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0)
+                await telegram.tgMessage(res[0]);
                 return response.status(200).json({status: 'ok', rowId: res[0]});
            
         }

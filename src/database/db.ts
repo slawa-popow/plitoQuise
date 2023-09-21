@@ -1,5 +1,5 @@
 import { QuizeSendData } from "../types/appT";
-import { DbClient } from "../types/dbT";
+import { Admins, DbClient } from "../types/dbT";
 import { mysqlc } from "./MysqlClient";
 
 
@@ -19,6 +19,14 @@ export class Db {
 
     async writeQuizData(data: QuizeSendData): Promise<string[]> {
         return (this.client) ? await this.client.writeQuizData(data) : [];
+    }
+
+    async getRowData(rowId: string): Promise<QuizeSendData[]> {
+        return (this.client) ? await this.client.getRowData(rowId) : [];
+    }
+
+    async getManagers(): Promise<Admins[]> {
+        return (this.client) ? await this.client.getManagers() : [];
     }
 }
 
