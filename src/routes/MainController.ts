@@ -58,7 +58,7 @@ class MainController {
                     const curdate = client.date;
                     data.date = curdate;
                     data.isFrom = isFrom;
-                    data.telegram = client.telegram_id || '';
+                    data.telegram = client.telegram_id || ''; 
                     data.uid = uid || '';
 
                     console.log('enter to TELEGRAM block');
