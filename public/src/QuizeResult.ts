@@ -10,6 +10,8 @@ declare const window: {
     Telegram: TelegramWebApps.SDK;
 } & Window;
 
+window.Telegram.WebApp.ready();
+
 enum Error {
     ERR='red',
     OK='green'
@@ -68,7 +70,7 @@ export class QuizeResult {
             if (result && result.status && result.status != '') {
                 this.sendErrMessage(Error.OK, result.status);
                 const idQuiz = result.rowId;
-                window.Telegram.WebApp.sendData({rowId: idQuiz});
+                window.Telegram.WebApp.sendData(idQuiz);
 
             } else {
                 this.sendErrMessage(Error.ERR, 'Ошибка. Попробуйте отправить еще раз.');
