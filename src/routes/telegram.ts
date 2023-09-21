@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 import { QuizeSendData } from "../types/appT";
 import axios from "axios";
 
-dotenv.config();
 
-const token = process.env.TELEGRAM_TOKEN;
+
+
 
 export const telegram = (() => {
 
@@ -37,6 +37,8 @@ export const telegram = (() => {
     }
 
     async function tgMessage(rowId: string) {
+        dotenv.config();
+        const token = process.env.TELEGRAM_TOKEN;
         const url = `https://api.telegram.org/bot${token}/sendMessage`;
         const data = await db.getRowData(rowId);
         const managers = await db.getManagers();
