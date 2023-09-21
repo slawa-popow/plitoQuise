@@ -34,7 +34,7 @@ class MainController {
                 return response.status(200).json({status: 200})
             }
         }
-        request.session = undefined;
+        request.session = null;
         return response.status(403).json({status: 0}) 
     }
 
