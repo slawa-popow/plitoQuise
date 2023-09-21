@@ -23,8 +23,14 @@ class MainController {
         const botData: FromBot = request.body;
         if (uidClient && botData) {
             const isValid = await db.checkClient(uidClient);
+
+            console.log('isValid: ', isValid, 'uidClient: ', uidClient, 'botData: ',  botData);
+
             if (isValid) {
                 request.session!.client = botData;                  // session
+
+                console.log('sesion: ', request.session);
+
                 return response.status(200).json({status: 200})
             }
         }
@@ -42,7 +48,7 @@ class MainController {
         if (data) {
 
             console.log(request.session, request.session!.client)
-            
+
             if (request.session && request.session.client) {
                 const client: FromBot = request.session.client;
                 const uid = client.uid;
@@ -54,6 +60,8 @@ class MainController {
                     data.isFrom = isFrom;
                     data.telegram = client.telegram_id || '';
                     data.uid = uid || '';
+
+                    console.log('enter to TELEGRAM block');
                 }
             } else {
                 isFrom = 'WEB';
