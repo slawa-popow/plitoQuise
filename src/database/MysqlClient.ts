@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+import mysql, { ResultSetHeader } from 'mysql2/promise';
 import { Pool } from "mysql2/promise";
  
 import dotenv from 'dotenv';
@@ -58,7 +58,7 @@ class MysqlClient implements DbClient {
     
     }
 // 38
-    async writeQuizData(data: QuizeSendData): Promise<boolean> {
+    async writeQuizData(data: QuizeSendData): Promise<string[]> {
         const connection = await this.pool!.getConnection();
 
         try {
@@ -89,7 +89,7 @@ class MysqlClient implements DbClient {
                     'country'
                     ];
 
-                connection.query(`INSERT INTO ${Table.Quize}
+                const [rsh, _] = await connection.query(`INSERT INTO ${Table.Quize}
                 (
                     clients_id, 
                     is_from, 
@@ -116,15 +116,15 @@ class MysqlClient implements DbClient {
                     country
                     ) 
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?);`, arrdata); 
-                
-                return true;
+                const res = rsh as ResultSetHeader;
+                return ['' + res.insertId];
             }
 
         } catch (e) { console.log('Error in MySqlAgent->setTestData()->catch', e) } 
         finally {
             connection.release();
         }
-        return false;
+        return [];
     }
 
 

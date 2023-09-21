@@ -4,7 +4,11 @@ import { settings } from "./settings";
 import { Step } from "./steppers/Step";
 import { StepFinish } from "./steppers/StepFinish";
 import { SendData } from "./types/stepsT";
+import { TelegramWebApps } from 'telegram-webapps-types';
 
+declare const window: {
+    Telegram: TelegramWebApps.SDK;
+} & Window;
 
 enum Error {
     ERR='red',
@@ -60,9 +64,12 @@ export class QuizeResult {
                   },
                   body: JSON.stringify(this.sendData)
             });
-            const result = await response.json() as {status: string};
+            const result = await response.json() as {status: string, rowId: string};
             if (result && result.status && result.status != '') {
                 this.sendErrMessage(Error.OK, result.status);
+                const idQuiz = result.rowId;
+                window.Telegram.WebApp.sendData({rowId: idQuiz});
+
             } else {
                 this.sendErrMessage(Error.ERR, 'Ошибка. Попробуйте отправить еще раз.');
             }

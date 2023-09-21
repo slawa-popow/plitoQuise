@@ -1,3 +1,9 @@
+import { Request } from "express";
+
+export interface MRequest extends Request {
+    session: any;
+}
+
 
 /**
  * Запрос от бота в первый запуск бота

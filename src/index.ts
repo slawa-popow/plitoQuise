@@ -4,13 +4,16 @@ import path  from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
-import cookieSession from 'cookie-session';
+
 import { engine } from 'express-handlebars';
 import { mainRouter } from './routes/mainRouter';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 export const app = express();
+
+const secret = process.env.SECRET || '';
 
 app.use(express.static(path.join(__dirname, '../public'))); 
 app.engine('handlebars', engine());
@@ -20,7 +23,10 @@ app.set('views', __dirname + '/../views');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); 
 
-app.use(cookieSession({name: 'session', keys: ['client'], maxAge: 24 * 60 * 60 * 1000, httpOnly: true}));
+app.use(cookieParser(secret));
+
+
+
 app.use(bodyParser.urlencoded({extended: true}));  
 app.use(cors({credentials: true}));
 

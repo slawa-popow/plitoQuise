@@ -17,8 +17,8 @@ export class Db {
         return (this.client) ? await this.client.checkClient(uidClient) : false;
     }
 
-    async writeQuizData(data: QuizeSendData): Promise<boolean> {
-        return (this.client) ? await this.client.writeQuizData(data) : false;
+    async writeQuizData(data: QuizeSendData): Promise<string[]> {
+        return (this.client) ? await this.client.writeQuizData(data) : [];
     }
 }
 
