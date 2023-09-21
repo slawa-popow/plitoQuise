@@ -112,6 +112,14 @@ export abstract class Step {
         }
     }
 
+    scrollTop() {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+    }
+
     abstract step(): void;          // очистить, наполнить содержимым контейне и др
     abstract selectData(): void;    // сохранить выбранные данные шага в объекте
 

@@ -46,6 +46,7 @@ export class HowManyWickets extends Step {
         setTitleStep(this.title);
         this.fillContainer(this.form);
         this.checkedBack();
+        this.scrollTop();
     }
 
     selectData(): void {
