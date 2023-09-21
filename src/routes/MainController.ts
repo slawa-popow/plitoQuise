@@ -40,6 +40,8 @@ class MainController {
         //width_second_gates: 'откатные: 0/распашные: 0',
         // console.log(data)
         if (data) {
+
+            console.log(request.session, request.session!.client)
             
             if (request.session && request.session.client) {
                 const client: FromBot = request.session.client;
