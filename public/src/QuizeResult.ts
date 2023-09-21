@@ -71,6 +71,7 @@ export class QuizeResult {
                 this.sendErrMessage(Error.OK, result.status);
                 const idQuiz = result.rowId;
                 window.Telegram.WebApp.sendData(idQuiz);
+                window.Telegram.WebApp.close();
 
             } else {
                 this.sendErrMessage(Error.ERR, 'Ошибка. Попробуйте отправить еще раз.');

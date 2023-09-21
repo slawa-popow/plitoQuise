@@ -46,6 +46,7 @@ export class StepN7 extends Step {
         setTitleStep(this.title);
         this.fillContainer(this.form);
         this.checkedBack();
+        window.scrollTo(0, 60);
     }
 
     selectData(): void {

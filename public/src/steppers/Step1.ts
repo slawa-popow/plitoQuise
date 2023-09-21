@@ -88,6 +88,7 @@ export class Step1 extends Step {
         setTitleStep(this.title);               // задать заголовок шага
         this.fillContainer(this.form);          // заполнить контейнер формой с картинками, кнопками итд
         this.checkedBack();                     // если в шаг было что-то записано (вернулись сюда) то показать что выбирали
+        window.scrollTo(0, 60);
     }
 
     selectData(): void {
