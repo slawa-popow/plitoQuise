@@ -5,8 +5,6 @@ import axios from "axios";
 
 
 
-
-
 export const telegram = (() => {
 
     function createMessage(data_quiz: QuizeSendData, rowId: string): string {
@@ -38,7 +36,7 @@ export const telegram = (() => {
 
     async function tgMessage(rowId: string) {
         dotenv.config();
-        const token = process.env.TELEGRAM_TOKEN;
+        const token = process.env.TELEGRAM_TOKEN || "";
         const url = `https://api.telegram.org/bot${token}/sendMessage`;
         const data = await db.getRowData(rowId);
         const managers = await db.getManagers();
