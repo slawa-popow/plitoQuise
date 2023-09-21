@@ -12,11 +12,10 @@
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.settings = void 0;
 exports.settings = (() => {
-    const DEV_HOST = '/';
-    const PROD_HOST = '';
+    const HOST = '/';
+    // const HOST = '';
     return {
-        DEV_HOST,
-        PROD_HOST,
+        HOST
     };
 })();
 
@@ -60,8 +59,7 @@ var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const settings_1 = __webpack_require__(/*! ./src/settings */ "./public/src/settings.ts");
-const host = settings_1.settings.DEV_HOST;
-// const host = settings.PROD_HOST;
+const host = settings_1.settings.HOST;
 const btnStart = document.getElementById('btn_start_calc');
 btnStart === null || btnStart === void 0 ? void 0 : btnStart.addEventListener('click', () => {
     console.log(host);

@@ -3,6 +3,7 @@ import { Pool } from "mysql2/promise";
  
 import dotenv from 'dotenv';
 import { DbClient } from '../types/dbT';
+import { QuizeSendData } from '../types/appT';
 
 
 dotenv.config();
@@ -14,10 +15,10 @@ export enum Table {
 
 class MysqlClient implements DbClient {
 
-    private HOST: string = process.env.HOST || '';
-    private USER: string = process.env.USER || '';
-    private DATABASE: string = process.env.DATABASE || '';
-    private PASSWORD: string = process.env.PASSWORD || '';
+    private HOST: string = process.env.PHOST || '';
+    private USER: string = process.env.PUSER || '';
+    private DATABASE: string = process.env.PDATABASE || '';
+    private PASSWORD: string = process.env.PPASSWORD || '';
     private pool: Pool | null = null;
 
     constructor() { 
@@ -49,12 +50,81 @@ class MysqlClient implements DbClient {
                 return (res.length > 0) ? true : false;
             }
 
-        } catch (e) { console.log('Error in MySqlAgent->setTestData()->catch', e) } 
+        } catch (e) { console.log('Error in MySqlAgent->checkClient()->catch', e) } 
         finally {
             connection.release();
         }
         return false;
     
+    }
+// 38
+    async writeQuizData(data: QuizeSendData): Promise<boolean> {
+        const connection = await this.pool!.getConnection();
+
+        try {
+            if (connection) {
+                const arrdata = [
+                    data.clients_id, 
+                    data.isFrom, 
+                    data.name, 
+                    '', 
+                    data.phone, 
+                    data.color_fence_block, 
+                    data.var_comp_coll,
+                    data.fill_between_coll, 
+                    data.isAutomatic, 
+                    data.isMount,
+                    data.height_fence, 
+                    data.total_lenght_fence, 
+                    data.lenght_between_colls,
+                    data.how_many_wickets, 
+                    data.width_wicket, 
+                    data.width_second_wicket, 
+                    data.how_many_gates, 
+                    data.width_gates,  
+                    data.width_second_gates,
+                    data.telegram || '', 
+                    data.city, 
+                    data.date || '',  
+                    'country'
+                    ];
+
+                connection.query(`INSERT INTO ${Table.Quize}
+                (
+                    clients_id, 
+                    is_from, 
+                    name, 
+                    email, 
+                    phone, 
+                    color_fence_block, 
+                    var_comp_coll,
+                    fill_between_coll, 
+                    isAutomatic, 
+                    isMount,
+                    height_fence, 
+                    total_lenght_fence, 
+                    lenght_between_colls,
+                    how_many_wickets, 
+                    width_wicket, 
+                    width_second_wicket, 
+                    how_many_gates, 
+                    width_gates,  
+                    width_second_gates,
+                    telegram, 
+                    city, 
+                    date,  
+                    country
+                    ) 
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?);`, arrdata); 
+                
+                return true;
+            }
+
+        } catch (e) { console.log('Error in MySqlAgent->setTestData()->catch', e) } 
+        finally {
+            connection.release();
+        }
+        return false;
     }
 
 

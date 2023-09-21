@@ -20,11 +20,21 @@ ENGINE=InnoDB ;`
 }
 
 
+
+/*
+	(clients_id, is_from, name, email, phone, color_fence_block, height_fence, total_lenght_fence, lenght_between_colls,
+		how_many_wickets, width_wicket, width_second_wicket, how_many_gates, width_gates, type_gates, width_second_gates,
+		type_second_gates,  _ym_uid, roistat_first_visit, _fbp, _fbc, viber, fbclid, telegram, dt_created, href,
+		userAgent, lng, currency, notify, timezone, lang, referer, ip, city, country, _ga, fingerprint)
+*/
+
+
 export const CREATE_TABLE_QUIZE = () => {
 
     return `CREATE TABLE IF NOT EXISTS quize (
 	id INT(11) NOT NULL AUTO_INCREMENT,
-	clients_id INT(11) NOT NULL DEFAULT '0',
+	clients_id INT(11) NULL DEFAULT NULL,
+	is_from VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	name VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	email VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	phone VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
@@ -37,7 +47,9 @@ export const CREATE_TABLE_QUIZE = () => {
 	width_second_wicket DOUBLE NOT NULL DEFAULT '0',
 	how_many_gates INT(11) NOT NULL DEFAULT '0',
 	width_gates DOUBLE NOT NULL DEFAULT '0',
+	type_gates VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	width_second_gates DOUBLE NOT NULL DEFAULT '0',
+	type_second_gates VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	_ym_uid VARCHAR(150) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	roistat_first_visit VARCHAR(150) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
 	_fbp VARCHAR(150) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',

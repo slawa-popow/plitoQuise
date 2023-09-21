@@ -59,6 +59,35 @@ function createDiv5(imgsrc: string, titleRadio: string, nameRadioG: string, radi
     return div;
 }
 
+
+export function domStepN6 (domData: StepsSelectData5): HTMLFormElement {
+    const form = document.createElement('form');
+    form.setAttribute('id', domData.idForm);
+
+    const cdiv = document.createElement('div');
+    cdiv.classList.add('container');
+    const div = document.createElement('div');
+    div.classList.add('form-group', 'step-2-area-div')
+    domData.variants.forEach((v, i) => {
+        const rinput = document.createElement('input');
+        const rlabel = document.createElement('label');
+        rinput.setAttribute('type', 'text');
+        rinput.setAttribute('style', 'max-width: 200px;');
+        rinput.setAttribute('id', `${domData.idForm}-N-${i}`);
+        rinput.setAttribute('name', v.nameRadioGroup);
+        rinput.setAttribute('placeholder', v.titleRadioGroup);
+        rlabel.setAttribute('for', `${domData.idForm}-N-${i}`);
+        rlabel.textContent = v.titleRadioGroup;
+        div.appendChild(rlabel);
+        div.appendChild(rinput);
+    });
+    cdiv.appendChild(div);
+    form.appendChild(cdiv);
+
+    return form;
+}
+
+
 // <input type="radio" id="contactChoice1" name="contact" value="email" />
 // <label for="contactChoice1">Email</label>
 

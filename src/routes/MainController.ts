@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { FromBot } from '../types/appT';
+import { FromBot, QuizeSendData } from '../types/appT';
 import { db } from '../database/db';
 
 
@@ -32,6 +32,40 @@ class MainController {
         return response.status(403).json({status: 0}) 
     }
 
+
+    async sendQuizData(request: Request, response: Response) {
+        const data = request.body as QuizeSendData;
+        let isFrom: string = '';
+        //width_gates: 'откатные: 3.5/распашные: 3.5',
+        //width_second_gates: 'откатные: 0/распашные: 0',
+        // console.log(data)
+        if (data) {
+            
+            if (request.session && request.session.client) {
+                const client: FromBot = request.session.client;
+                const uid = client.uid;
+                const isValid = await db.checkClient(uid);
+                if (isValid) {
+                    isFrom = 'TELEGRAM';
+                    const curdate = client.date;
+                    data.date = curdate;
+                    data.isFrom = isFrom;
+                    data.telegram = client.telegram_id || '';
+                    data.uid = uid || '';
+                }
+            } else {
+                isFrom = 'WEB';
+                data.isFrom = isFrom;
+                data.clients_id = null;
+                const curdate = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow"});
+                data.date = curdate.split(', ')[0];
+            }
+            const res = await db.writeQuizData(data);
+            if (res)
+                return response.status(200).json({status: 'ok'});
+        }
+        return response.status(400).json({status: ''});
+    }
    
 
 }

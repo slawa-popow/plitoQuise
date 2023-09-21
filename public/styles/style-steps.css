@@ -184,6 +184,7 @@ body {
 .titleStep {
   display: inline-block;
   width: 100%;
+  padding: 4px 10px;
   text-align: center;
   margin: 10px 0;
   color: black;
@@ -321,3 +322,93 @@ body {
     0% { opacity: 1; }
     100% { opacity: 0; }
   }
+
+  .formdiv {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 50px 0;   
+  }
+
+  
+  .form-div-send {
+    padding: 20px;
+    margin-left: 10px; 
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    box-shadow:
+    inset 0 0  0 1px rgb(255,255,255, 0.936),
+          0.1em 0.1em 0.2em rgba(0, 0, 0, 0.112);
+  }
+
+  .form-div-send label {
+    margin-top: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #434343;
+  }
+
+  .formdiv img {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: end;
+    margin: 0 auto;
+    object-fit: fill;
+    padding: 40px;
+    max-width: 200px;
+    height: 210px;
+     
+  }
+
+  /* --------- button finish --------- */
+
+/* CSS */
+.formdiv button {
+   
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 45px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 1em;
+  margin-left: 80px;
+  margin-top: 10px;
+   
+}
+
+.formdiv button:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.formdiv button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.formdiv button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}

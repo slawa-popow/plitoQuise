@@ -6,6 +6,7 @@ import { Step } from "./Step";
 export class Step1 extends Step {
     RADIO_NAME = "step-1";
 
+    // данные для отправки "генератору" (формирователю) хтмл 
     domData: StepsSelectData = {
         
         idForm: 'form-step-1',
@@ -76,17 +77,17 @@ export class Step1 extends Step {
         this.button = button;
         this.title = title;
         this.isFirst = isFirst;
-        this.stepData = {}
+        this.stepData = {};
         this.nameStep = nameStep;
     }
 
     step(): void {
-        this.clearContainer();
-        setTitleStep();
-        this.form = domStep1(this.domData);
-        setTitleStep(this.title);
-        this.fillContainer(this.form);
-        this.checkedBack();
+        this.clearContainer();                  // очисть контейнер
+        setTitleStep();                         // очистить заголовок шага
+        this.form = domStep1(this.domData);     // сгенерировать хтмл объект формы
+        setTitleStep(this.title);               // задать заголовок шага
+        this.fillContainer(this.form);          // заполнить контейнер формой с картинками, кнопками итд
+        this.checkedBack();                     // если в шаг было что-то записано (вернулись сюда) то показать что выбирали
     }
 
     selectData(): void {

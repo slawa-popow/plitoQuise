@@ -39,3 +39,34 @@ export interface StepsFormSity {
     nameInput: string;
     idInput: string;
 }
+
+
+export interface StepFinishtData {
+    imgSrc ?: string;
+    idForm: string;
+    inputNameName: string;
+    inputTelName: string;
+    
+}
+
+
+export interface SendData {
+    name: string;
+    phone: string;
+    color_fence_block: string;
+    height_fence: string | number;
+    total_lenght_fence: string | number;
+    lenght_between_colls: string | number;
+    how_many_wickets: string | number;
+    width_wicket: string | number;
+    width_second_wicket: string | number;
+    how_many_gates: string | number;
+    width_gates: string | number;
+    width_second_gates: string | number;
+    var_comp_coll : string;
+    fill_between_coll : string;
+    isAutomatic : string;
+    isMount: string;
+    city: string;
+
+}
