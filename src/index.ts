@@ -49,7 +49,7 @@ app.use(session({
 	resave: false,
   unset: 'destroy',
 	saveUninitialized: false,
-  
+  cookie: {maxAge: 600000}
 }));
 
 
