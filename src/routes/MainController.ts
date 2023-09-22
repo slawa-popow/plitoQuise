@@ -9,7 +9,7 @@ import { db } from '..';
 class MainController {
 
     async getIndexPage(request: Request, response: Response) {
-        request.session.clientData = {tgid: '#' }
+        request.session.clientData = {tgid: 'index' }
         console.log('getIndexPage ', request.session.id)
 
         return response.status(200).render('index', {
@@ -18,6 +18,7 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) { 
+        request.session.clientData = {tgid: 'start quize' }
         console.log('startQuizes ', request.session.id) 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
@@ -38,6 +39,7 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0)
                 await telegram.tgMessage(res[0]);
+                request.session.clientData = null;
                 request.sessionStore.destroy(request.session.id);
                 console.log('sess after del ', request.session);
 

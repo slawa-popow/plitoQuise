@@ -23,7 +23,7 @@ dotenv.config();
 
 export const app = express();
 
-const secret = process.env.SECRET || '';
+const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
 
@@ -47,8 +47,6 @@ app.use(session({
 	secret: secret,
 	store: mysqlc.sessionStore,
 	resave: false,
-  unset: 'destroy',
-	saveUninitialized: false,
   cookie: {maxAge: 600000}
 }));
 
