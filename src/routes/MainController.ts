@@ -30,7 +30,7 @@ class MainController {
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         console.log('sess bef del ', request.session)
-        if (data && request.session.clientData) {
+        if (data) {
             isFrom = 'WEB';
             data.isFrom = isFrom;
             const curdate = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow"});
@@ -39,8 +39,6 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0)
                 await telegram.tgMessage(res[0]);
-                request.session.clientData = null;
-                request.sessionStore.destroy(request.session.id);
                 console.log('sess after del ', request.session);
 
                 return response.status(200).json({status: 'ok', rowId: res[0]});
