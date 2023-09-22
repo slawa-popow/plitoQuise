@@ -34,7 +34,7 @@ export class MysqlClient implements DbClient {
         this.sessionStore = new MySQLStore({
             createDatabaseTable: true,
             clearExpired: true,
-            checkExpirationInterval: 600000,
+            checkExpirationInterval: 6000,
             expiration: 6000000,
         }, connection);
          

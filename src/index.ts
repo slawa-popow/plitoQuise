@@ -9,7 +9,7 @@ import { engine } from 'express-handlebars';
 import { mainRouter } from './routes/mainRouter';
 import { MysqlClient } from './database/MysqlClient';
 import session from 'express-session';
-import { funcs } from './utils/funcs';
+// import { funcs } from './utils/funcs';
 import { Db } from './database/db';
  
 declare module 'express-session' {
@@ -40,14 +40,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));  
 app.use(cors({credentials: true}));
 app.use(session({
-  genid: function(_req) {
-    return funcs.getUID();
-  },
-  name: 'connect.sid',
+  
+  name: 'sos',
+  
 	secret: secret,
 	store: mysqlc.sessionStore,
+  saveUninitialized: true,
 	resave: false,
-  cookie: {maxAge: 600000}
+  cookie: {maxAge: 600000, path: '/', httpOnly: false}
 }));
 
 
