@@ -1,7 +1,8 @@
-import { db } from "../database/db";
+ 
 import dotenv from 'dotenv';
 import { QuizeSendData } from "../types/appT";
 import axios from "axios";
+import { db } from '..';
 
 
 

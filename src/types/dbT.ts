@@ -4,7 +4,7 @@ import { QuizeSendData } from "./appT";
 export interface DbClient {
 
     checkClient(uidClient: string): Promise<boolean>;
-    writeQuizData(data: QuizeSendData): Promise<string[]>;
+    wQuizData(data: QuizeSendData): Promise<string[]>;
     getRowData(rowId: string): Promise<QuizeSendData[]>;
     getManagers(): Promise<Admins[]>;
 }

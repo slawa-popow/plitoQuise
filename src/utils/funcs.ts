@@ -5,6 +5,10 @@ export const funcs = (() => {
 
     }
 
-    const publicApi = { getNameType, };
+    function getUID(): string {
+        return new Date().getTime().toString(16);
+    }
+
+    const publicApi = { getNameType, getUID};
     return publicApi;
 })();

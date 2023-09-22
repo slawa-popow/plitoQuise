@@ -10,7 +10,7 @@ declare const window: {
     Telegram: TelegramWebApps.SDK;
 } & Window;
 
-window.Telegram.WebApp.ready();
+
 
 enum Error {
     ERR='red',
@@ -61,17 +61,27 @@ export class QuizeResult {
         if (this.sendData) {
             const response = await fetch(settings.HOST + 'sendQuizData', {
                 method: 'POST',
+                mode: "cors",  
+                credentials: "same-origin",  
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
                   },
                   body: JSON.stringify(this.sendData)
             });
             const result = await response.json() as {status: string, rowId: string};
+            console.log(result.status)
             if (result && result.status && result.status != '') {
-                this.sendErrMessage(Error.OK, result.status);
-                const idQuiz = result.rowId;
-                window.Telegram.WebApp.sendData(idQuiz);
-                window.Telegram.WebApp.close();
+                if (result.status === 'ok') {
+                    this.sendErrMessage(Error.OK, result.status);
+                    const idQuiz = result.rowId;
+                    try {
+                        window.Telegram.WebApp.ready();
+                        window.Telegram.WebApp.sendData(idQuiz);
+                        window.Telegram.WebApp.close();
+                    } catch (e) {}
+                } else if (result.status === 'redirect') {
+                    window.location.href = settings.HOST;
+                }
 
             } else {
                 this.sendErrMessage(Error.ERR, 'Ошибка. Попробуйте отправить еще раз.');

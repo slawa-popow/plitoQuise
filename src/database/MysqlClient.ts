@@ -4,6 +4,10 @@ import { Pool } from "mysql2/promise";
 import dotenv from 'dotenv';
 import { Admins, DbClient } from '../types/dbT';
 import { QuizeSendData } from '../types/appT';
+import session from 'express-session';
+const MySQLStore = require('express-mysql-session')(session);
+
+
 
 
 dotenv.config();
@@ -14,7 +18,7 @@ export enum Table {
     Admins='managers'
 };
 
-class MysqlClient implements DbClient {
+export class MysqlClient implements DbClient {
 
     private HOST: string = process.env.PHOST || '';
     private USER: string = process.env.PUSER || '';
@@ -22,8 +26,18 @@ class MysqlClient implements DbClient {
     private PASSWORD: string = process.env.PPASSWORD || '';
     private pool: Pool | null = null;
 
+    public sessionStore: any = null;
+
     constructor() { 
-        this.setPool()
+        this.setPool();
+        const connection = this.pool;
+        this.sessionStore = new MySQLStore({
+            createDatabaseTable: true,
+            clearExpired: true,
+            checkExpirationInterval: 600000,
+            expiration: 6000000,
+        }, connection);
+         
     }
 
     setPool(): void {
@@ -98,7 +112,7 @@ class MysqlClient implements DbClient {
     }
 
 // 38
-    async writeQuizData(data: QuizeSendData): Promise<string[]> {
+    async wQuizData(data: QuizeSendData): Promise<string[]> {
         const connection = await this.pool!.getConnection();
 
         try {
@@ -189,4 +203,3 @@ class MysqlClient implements DbClient {
     
 }
 
-export const mysqlc = new MysqlClient();
