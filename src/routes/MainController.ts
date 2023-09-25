@@ -11,7 +11,10 @@ class MainController {
 
     async getIndexPage(request: Request, response: Response) {
         const tgid = request.query.tgid;
-        request.session.clientData = {tgid: tgid || null }
+        if (!tgid) {
+            request.session.clientData = {tgid: '#' }
+        } else
+            request.session.clientData = {tgid: tgid}
 
         console.log('getIndexPage ', request.session)
 
