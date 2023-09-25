@@ -7,9 +7,9 @@ import { mainController } from "./MainController";
 const mainRouter = Router(); 
 
 mainRouter.get('/',  mainController.getIndexPage);
-mainRouter.get('/startQuize', mainController.startQuizes);
+mainRouter.get('/startquize', mainController.startQuizes);
 
-mainRouter.post('/sendQuizData',  mainController.sendQuizData);
+mainRouter.post('/sendquizdata',  mainController.sendQuizData);
 
 
 export { mainRouter }

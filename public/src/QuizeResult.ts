@@ -59,7 +59,7 @@ export class QuizeResult {
         e.preventDefault();
         this.stepsDataResult();
         if (this.sendData) {
-            const response = await fetch(settings.HOST + 'sendQuizData', {
+            const response = await fetch(settings.HOST + '/sendquizdata', {
                 method: 'POST',
                 mode: "cors",  
                 credentials: "include",  
