@@ -14,5 +14,5 @@ window.Telegram.WebApp.expand();
 
 const btnStart = document.getElementById('btn_start_calc');
 btnStart?.addEventListener('click', () => {     
-    window.location.href = host + `startQuize`
+    window.location.href = host + '/startquize';
 });
