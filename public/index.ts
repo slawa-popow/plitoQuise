@@ -1,8 +1,5 @@
 import { TelegramWebApps } from "telegram-webapps-types";
-import { settings } from "./src/settings";
 
-
-const host = settings.HOST; 
 
 declare const window: {
     Telegram: TelegramWebApps.SDK;
@@ -14,5 +11,5 @@ window.Telegram.WebApp.expand();
 
 const btnStart = document.getElementById('btn_start_calc');
 btnStart?.addEventListener('click', () => {     
-    window.location.href = host + '/startquize';
+    window.location.href = 'https://plitochka-quiz.vercel.app/startquize';
 });
