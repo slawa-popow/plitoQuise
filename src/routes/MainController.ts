@@ -36,8 +36,7 @@ class MainController {
 
     async sendQuizData(request: Request, response: Response) {
         const sessionData = request.session.clientData;
-        request.session.clientData = sessionData;       
-        request.session.save();
+        
 
         console.log('sendQuizData ',  request.session)
         const data = request.body as QuizeSendData;
