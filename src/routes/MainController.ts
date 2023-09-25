@@ -44,7 +44,7 @@ class MainController {
         let isFrom: string = '';
         
         if (data &&  request.session.clientData) {
-            if (request.session.clientData.tgid) {
+            if (request.session.clientData.tgid && request.session.clientData.tgid != '#') {
                 isFrom = 'telegram';
                 data.telegram = request.session.clientData.tgid;
             } else {
