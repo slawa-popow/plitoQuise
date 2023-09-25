@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { QuizeSendData } from '../types/appT';
 import { telegram } from './telegram';
 import { db } from '..';
-// import { gdoc } from '../utils/gsheets';
+
 
 
 
@@ -57,7 +57,7 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
-                // await gdoc(res[0], data);
+                // 
                 console.log(d) 
                 request.session.clientData = null;
                 request.session.save();

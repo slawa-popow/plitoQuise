@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { QuizeSendData } from "../types/appT";
 import axios from "axios";
 import { db } from '..';
+import { gdoc } from '../utils/gsheets';
 
 
 
@@ -43,6 +44,7 @@ export const telegram = (() => {
         const managers = await db.getManagers();
         if (Array.isArray(data) && data.length > 0) {
             if (Array.isArray(managers) && managers.length > 0) {
+                await gdoc(rowId, data[0]);
                 for (let m of managers) {
                     const managerid = m.telegram_id;
                     const message = createMessage(data[0], rowId);
