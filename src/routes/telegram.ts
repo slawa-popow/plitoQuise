@@ -48,13 +48,11 @@ export const telegram = (() => {
                     const message = createMessage(data[0], rowId);
                     const sendUrl = url + `?chat_id=${managerid}&text=${message}&parse_mode=HTML`;
                     await axios.get(sendUrl);
-                    
-        
         
                 }
             }
         }
-        
+       return data[0];
     }
 
     return { tgMessage }
