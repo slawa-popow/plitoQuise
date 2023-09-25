@@ -43,10 +43,10 @@ class MainController {
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
-        if (data &&  request.session.clientData) {
-            if (request.session.clientData.tgid && request.session.clientData.tgid != '#') {
+        if (data &&  sessionData) {
+            if (sessionData.tgid && sessionData.tgid != '#') {
                 isFrom = 'telegram';
-                data.telegram = request.session.clientData.tgid;
+                data.telegram = sessionData.tgid;
             } else {
                 isFrom = 'web';
             }
@@ -57,8 +57,8 @@ class MainController {
             data.clients_id = new Date().getTime().toString(16);
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
-                await gdoc(res[0], data);
                 const d = await telegram.tgMessage(res[0]);
+                await gdoc(res[0], data);
                 console.log(d) 
                 request.session.clientData = null;
                 request.session.save();
