@@ -57,9 +57,9 @@ class MainController {
             data.clients_id = new Date().getTime().toString(16);
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
+                await gdoc(res[0], data);
                 const d = await telegram.tgMessage(res[0]);
-                 
-                await gdoc(res[0], d);
+                console.log(d) 
                 request.session.clientData = null;
                 request.session.save();
                 
