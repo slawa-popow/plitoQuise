@@ -28,7 +28,7 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
         await sheet.addRow({ 
             dbrow_id: idrow,
             clients_id: d.clients_id || '',
-            isFrom: d.isFrom || '',
+            isFrom: d.isFrom || d.is_from || '',
             name: d.name,
             email: '',
             phone: d.phone,

@@ -44,4 +44,5 @@ export interface QuizeSendData {
     date ?: string;
     time ?: string;
     uid ?: string;
+    is_from ?: string;
 }
