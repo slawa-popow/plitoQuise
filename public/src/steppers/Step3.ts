@@ -10,12 +10,20 @@ export class Step3 extends Step {
         idForm: 'form-step-3',
         variants: [
             {
+                imgSrc: "styles/stepsimg/no.png",
+                titleSpan: 'Не надо',
+                radioId: "lamel-no-1",
+                radioName: this.RADIO_NAME,
+                radioValue: 'Не надо',
+                isChecked: true
+            },
+            {
                 imgSrc: "styles/stepsimg/s3/zabor-sparta_photo_9.jpg",
                 titleSpan: 'Горизонтальные ламели в стиле Ранчо, модель "Спарта"',
                 radioId: "lamel-1",
                 radioName: this.RADIO_NAME,
                 radioValue: 'Горизонтальные ламели в стиле Ранчо, модель "Спарта"',
-                isChecked: true
+                isChecked: false
             },
             {
                 imgSrc: "styles/stepsimg/s3/line_kviz.jpg",
@@ -134,7 +142,7 @@ export class Step3 extends Step {
         setTitleStep(this.title);
         this.fillContainer(this.form);
         this.checkedBack();
-        this.scrollTop();
+        this.bodyScrollTop();
     }
 
     selectData(): void {

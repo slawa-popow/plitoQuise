@@ -46,7 +46,7 @@ export class StepN5 extends Step {
         setTitleStep(this.title);
         this.fillContainer(this.form);
         this.checkedBack();
-        this.scrollTop();
+        this.bodyScrollTop();
     }
 
     selectData(): void {

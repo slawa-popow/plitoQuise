@@ -27,6 +27,7 @@ export abstract class Step {
         input?.forEach(i => {
             if (i instanceof HTMLInputElement) {
                 i.checked = true;
+                this.bodyScrollDown();
             }
         });
     }
@@ -112,12 +113,30 @@ export abstract class Step {
         }
     }
 
-    scrollTop() {
+    cntScrollTop() {
+        this.cnt?.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
+       
+    }
+
+    bodyScrollDown() {
+        window.scrollTo({
+            top: 100,
+            left: 0,
+            behavior: "smooth",
+          });
+    }
+
+    bodyScrollTop() {
         window.scrollTo({
             top: 0,
             left: 0,
             behavior: "smooth",
           });
+          this.cntScrollTop();
     }
 
     abstract step(): void;          // очистить, наполнить содержимым контейне и др

@@ -157,6 +157,7 @@ export class QuizeResult {
         for (let s of this.steps) {
             if (s.form && form.id === s.form.id)
                 s.selectData();
+            s.bodyScrollDown();
         }
     }
 
