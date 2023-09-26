@@ -47,12 +47,15 @@ export const telegram = (() => {
             if (Array.isArray(managers) && managers.length > 0) {
                 // await gdoc(rowId, data[0]);
                 const message = createMessage(data[0], rowId);
-                for (let m of managers) {
-                    const managerid = m.telegram_id;
-                    const sendUrl = url + `?chat_id=${managerid}&text=${message}&parse_mode=HTML`;
-                    await axios.get(sendUrl);
-        
+                try {
+                    for (let m of managers) {
+                        const managerid = m.telegram_id;
+                        const sendUrl = url + `?chat_id=${managerid}&text=${message}&parse_mode=HTML`;
+                        await axios.get(sendUrl);
+            
+                    }
                 }
+                catch (e) {console.log('error in tgMessage() axios run: ', e)}
             }
         }
        return data[0];
