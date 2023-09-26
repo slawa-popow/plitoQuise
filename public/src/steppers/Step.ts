@@ -123,8 +123,9 @@ export abstract class Step {
     }
 
     bodyScrollDown() {
+        const height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
         window.scrollTo({
-            top: 100,
+            top: height,
             left: 0,
             behavior: "smooth",
           });
