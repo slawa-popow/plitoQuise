@@ -44,7 +44,7 @@ class MainController {
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
-        if (data && sessionData.tgid ) {
+        if (data) {
             if (sessionData.tgid != '#') {
                 isFrom = 'telegram';
                 data.telegram = sessionData.tgid;

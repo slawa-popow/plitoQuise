@@ -78,7 +78,11 @@ export class QuizeResult {
                         window.Telegram.WebApp.ready();
                         window.Telegram.WebApp.sendData(idQuiz);
                         window.Telegram.WebApp.close();
+                        
                     } catch (e) {}
+                    finally {
+                        window.location.href = settings.HOST;
+                    }
                 } else if (result.status === 'redirect') {
                     window.location.href = settings.HOST;
                 }
