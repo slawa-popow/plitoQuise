@@ -11,23 +11,27 @@ import { gdoc } from '../utils/gsheets';
 class MainController {
 
     async getIndexPage(request: Request, response: Response) {
-        const tgid = request.query.tgid;
-        if (!tgid) {
-            request.session.clientData = {tgid: '#' }
-        } else
-            request.session.clientData = {tgid: tgid}
-
-        console.log('getIndexPage ', request.session)
+        try {
+            const tgid = request.query.tgid;
+            if (!tgid) {
+                request.session.clientData = {tgid: '#' }
+            } else
+                request.session.clientData = {tgid: tgid}
+    
+            console.log('getIndexPage ', request.session)
+        } catch (e) {console.log('try-catch getIndexpage ', e)}
 
         return response.status(200).render('index', {
             layout: 'main', }); 
     }
 
 
-    async startQuizes(request: Request, response: Response) {  
-        const sessionData = request.session.clientData;
-        request.session.clientData = sessionData;       
-        request.session.save();
+    async startQuizes(request: Request, response: Response) { 
+        try {
+            const sessionData = request.session.clientData;
+            request.session.clientData = sessionData;       
+            request.session.save();
+        } catch (e) { console.log('try-catch startQuizes ', e) }
 
         console.log('startQuizes ',  request.session); 
         return response.status(200).render('runsteps', {

@@ -29,15 +29,7 @@ export class MysqlClient implements DbClient {
     public sessionStore: any = null;
 
     constructor() { 
-        this.setPool();
-        const connection = this.pool;
-        this.sessionStore = new MySQLStore({
-            createDatabaseTable: true,
-            clearExpired: true,
-            checkExpirationInterval: 6000,
-            expiration: 6000000,
-        }, connection);
-         
+        this.setPool();      
     }
 
     setPool(): void {
@@ -51,6 +43,12 @@ export class MysqlClient implements DbClient {
             rowsAsArray: false,
         }); 
         this.pool = pool;
+        this.sessionStore = new MySQLStore({
+            createDatabaseTable: true,
+            clearExpired: true,
+            checkExpirationInterval: 600000,
+            expiration: 6000000,
+        }, this.pool);
     }
 
 

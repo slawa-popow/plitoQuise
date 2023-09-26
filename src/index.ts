@@ -23,6 +23,8 @@ dotenv.config();
 
 export const app = express();
 
+app.use(cors({credentials: true}));
+
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
@@ -35,17 +37,14 @@ app.set('views', __dirname + '/../views');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); 
-
-
-app.use(bodyParser.urlencoded({extended: true}));  
-app.use(cors({credentials: true}));
+ 
 app.use(session({
   
   name: 'sos',
   
 	secret: secret,
 	store: mysqlc.sessionStore,
-  saveUninitialized: true,
+  saveUninitialized: false,
 	resave: false,
   cookie: {maxAge: 600000, path: '/', httpOnly: false}
 }));
