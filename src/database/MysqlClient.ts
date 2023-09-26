@@ -4,8 +4,8 @@ import { Pool } from "mysql2/promise";
 import dotenv from 'dotenv';
 import { Admins, DbClient } from '../types/dbT';
 import { QuizeSendData } from '../types/appT';
-// import session from 'express-session';
-// const MySQLStore = require('express-mysql-session')(session);
+import session from 'express-session';
+const MySQLStore = require('express-mysql-session')(session);
 
 
 
@@ -30,13 +30,13 @@ export class MysqlClient implements DbClient {
 
     constructor() { 
         this.setPool();
-        // const connection = this.pool;
-        // this.sessionStore = new MySQLStore({
-        //     createDatabaseTable: true,
-        //     clearExpired: true,
-        //     checkExpirationInterval: 6000,
-        //     expiration: 6000000,
-        // }, connection);
+        const connection = this.pool;
+        this.sessionStore = new MySQLStore({
+            createDatabaseTable: true,
+            clearExpired: true,
+            checkExpirationInterval: 6000,
+            expiration: 6000000,
+        }, connection);
          
     }
 
