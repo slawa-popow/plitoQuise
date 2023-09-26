@@ -75,12 +75,13 @@ export class QuizeResult {
                     this.sendErrMessage(Error.OK, result.status);
                     const idQuiz = result.rowId;
                     try {
+                        window.location.href = settings.HOST;
                         window.Telegram.WebApp.ready();
                         window.Telegram.WebApp.sendData(idQuiz);
                         window.Telegram.WebApp.close();
                         
                     } catch (e) {}
-                    window.location.href = settings.HOST;
+                    
                 } 
                 else if (result.status === 'redirect') {
                     window.location.href = settings.HOST;
