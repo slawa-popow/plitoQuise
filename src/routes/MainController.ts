@@ -42,7 +42,10 @@ class MainController {
         let isFrom: string = '';
         
         if (data && sessionData ) {
-            
+            if (sessionData.tgid != '#') {
+                isFrom = 'telegram';
+                data.telegram = sessionData.tgid;
+            } else { isFrom = 'web'; }
             data.isFrom = isFrom;
             const curdate = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow"});
             data.date = curdate.split(', ')[0];
