@@ -12,7 +12,7 @@ export class Step3 extends Step {
             {
                 imgSrc: "styles/stepsimg/no.png",
                 titleSpan: 'Не надо',
-                radioId: "lamel-no-1",
+                radioId: "lamel-0",
                 radioName: this.RADIO_NAME,
                 radioValue: 'Не надо',
                 isChecked: true
