@@ -79,13 +79,13 @@ export class QuizeResult {
                         window.Telegram.WebApp.sendData(idQuiz);
                         window.Telegram.WebApp.close();
                         
-                    } catch (e) {}
-                    finally {
-                        window.location.href = settings.HOST;
+                    } catch (e) {
+
                     }
                 } else if (result.status === 'redirect') {
                     window.location.href = settings.HOST;
                 }
+                window.location.href = settings.HOST;
 
             } else {
                 this.sendErrMessage(Error.ERR, 'Ошибка. Попробуйте отправить еще раз.');
