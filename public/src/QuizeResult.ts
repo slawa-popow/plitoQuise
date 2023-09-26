@@ -80,8 +80,9 @@ export class QuizeResult {
                         window.Telegram.WebApp.sendData(idQuiz);
                         window.Telegram.WebApp.close();
                         setTimeout(() => {
-                           window.location.href = 'https://plitochka-quiz.vercel.app/'; 
-                        }, 2000)
+                            console.log('redirect to url');
+                            window.location.href = 'https://plitochka-quiz.vercel.app'; 
+                        }, 4000)
                         
                     } catch (e) {}
                     
