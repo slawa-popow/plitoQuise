@@ -11,6 +11,6 @@ window.Telegram.WebApp.expand();
 
 const btnStart = document.getElementById('btn_start_calc');
 btnStart?.addEventListener('click', () => {     
-    window.location.href = '/startquize';
-    // window.location.href = 'https://plitochka-quiz.vercel.app/startquize';
+    // window.location.href = '/startquize';
+    window.location.href = 'https://plitochka-quiz.vercel.app/startquize';
 });
