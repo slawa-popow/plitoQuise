@@ -24,6 +24,7 @@ export function domStepFinish(domData: StepFinishtData, callback: (e: Event) => 
     
     const button = document.createElement('button');
     button.setAttribute('id', 'button-submit-steps');
+    button.setAttribute('type', 'button');
     button.textContent = 'Отправить';
     button.addEventListener('click', callback);
     

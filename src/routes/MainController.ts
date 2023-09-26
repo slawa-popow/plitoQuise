@@ -17,7 +17,7 @@ class MainController {
                 request.session.clientData = {tgid: '#' }
             } else
                 request.session.clientData = {tgid: tgid}
-    
+            request.session.save();
             console.log('getIndexPage ', request.session)
         } catch (e) {console.log('try-catch getIndexpage ', e)}
 
@@ -30,7 +30,6 @@ class MainController {
         try {
             const sessionData = request.session.clientData;
             request.session.clientData = sessionData;       
-            request.session.save();
         } catch (e) { console.log('try-catch startQuizes ', e) }
 
         console.log('startQuizes ',  request.session); 
@@ -45,7 +44,7 @@ class MainController {
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
-        if (data && sessionData ) {
+        if (data && sessionData.tgid ) {
             if (sessionData.tgid != '#') {
                 isFrom = 'telegram';
                 data.telegram = sessionData.tgid;
@@ -59,7 +58,7 @@ class MainController {
                 const d = await telegram.tgMessage(res[0]);
                 await gdoc(res[0], d);
                 console.log(d) 
-                request.session.clientData = null;
+                request.session.clientData.tgid = null;
                 request.session.save();
                 
                 return response.status(200).json({status: 'ok', rowId: res[0]});
