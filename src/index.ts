@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 import { engine } from 'express-handlebars';
 import { mainRouter } from './routes/mainRouter';
 import { MysqlClient } from './database/MysqlClient';
-import session from 'express-session';
+// import session from 'express-session';
 // import { funcs } from './utils/funcs';
 import { Db } from './database/db';
  
@@ -23,7 +23,7 @@ dotenv.config();
 
 export const app = express();
 
-const secret = process.env.SECRET || '123';
+// const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
 
@@ -39,16 +39,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(bodyParser.urlencoded({extended: true}));  
 app.use(cors({credentials: true}));
-app.use(session({
+// app.use(session({
   
-  name: 'sos',
+//   name: 'sos',
   
-	secret: secret,
-	store: mysqlc.sessionStore,
-  saveUninitialized: true,
-	resave: false,
-  cookie: {maxAge: 600000, path: '/', httpOnly: false}
-}));
+// 	secret: secret,
+// 	store: mysqlc.sessionStore,
+//   saveUninitialized: true,
+// 	resave: false,
+//   cookie: {maxAge: 600000, path: '/', httpOnly: false}
+// }));
 
 
 
