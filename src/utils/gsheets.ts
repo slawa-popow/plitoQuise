@@ -3,19 +3,22 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import dotenv from 'dotenv';
 import { QuizeSendData } from '../types/appT';
 
+dotenv.config();
+
+const SCOPES = [
+'https://www.googleapis.com/auth/spreadsheets',
+'https://www.googleapis.com/auth/drive.file',
+];
+
+const gemail = process.env.GEMAIL || '';
+const gkey = process.env.GKEY || '';
 
 export async function gdoc(idrow: string, d: QuizeSendData) {
     try {
-        dotenv.config();
-        
-        const SCOPES = [
-        'https://www.googleapis.com/auth/spreadsheets',
-        'https://www.googleapis.com/auth/drive.file',
-        ];
         
         const jwt = new JWT({
-        email: process.env.GEMAIL || '',
-        key: process.env.GKEY || '',
+        email: gemail,
+        key: gkey,
         scopes: SCOPES,
         });
         const doc = new GoogleSpreadsheet('1QuUQQk5AiUkpRAMgItah3itAs2N6eoy3GVK5iPiRppk', jwt);
