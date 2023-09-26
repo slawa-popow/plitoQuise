@@ -75,10 +75,13 @@ export class QuizeResult {
                     this.sendErrMessage(Error.OK, result.status);
                     const idQuiz = result.rowId;
                     try {
-                        window.location.href = settings.HOST;
+                        
                         window.Telegram.WebApp.ready();
                         window.Telegram.WebApp.sendData(idQuiz);
                         window.Telegram.WebApp.close();
+                        setTimeout(() => {
+                           window.location.href = 'https://plitochka-quiz.vercel.app/'; 
+                        }, 2000)
                         
                     } catch (e) {}
                     
