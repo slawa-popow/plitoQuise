@@ -49,7 +49,7 @@ export const telegram = (() => {
                 const message = createMessage(data[0], rowId);
                 
                 for (let m of managers) {
-                    const managerid = m.telegram_id;
+                    const managerid = m.telegram_id.trim();
                     const sendUrl = url + `?chat_id=${managerid}&text=${message}&parse_mode=HTML`;
                     try {
                         await axios.get(sendUrl);
