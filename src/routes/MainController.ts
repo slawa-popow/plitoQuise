@@ -47,7 +47,7 @@ class MainController {
                 data.telegram = sessionData.tgid;
             } else { isFrom = 'web'; }
             data.isFrom = isFrom;
-            const curdate = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow"});
+            const curdate = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow"}); 
             data.date = curdate.split(', ')[0];
             data.clients_id = new Date().getTime().toString(16);
             const res = await db.writeQuizData(data);
