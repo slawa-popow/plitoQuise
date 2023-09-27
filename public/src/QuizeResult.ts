@@ -61,7 +61,7 @@ export class QuizeResult {
         if (this.sendData) {
             const response = await fetch(settings.HOST + 'sendquizdata', {
                 method: 'POST',
-                credentials: "same-origin",  
+                credentials: "include",  
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
                   },
