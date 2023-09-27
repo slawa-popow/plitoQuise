@@ -44,7 +44,7 @@ class MainController {
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
-        if (data && sessionData.clientData && sessionData.clientData.tgid ) {
+        if (data) {
             if (sessionData.clientData.tgid != '#') {
                 isFrom = 'telegram';
                 data.telegram = sessionData.clientData.tgid;
@@ -57,8 +57,9 @@ class MainController {
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
                 await gdoc(res[0], d);
-                console.log(d) 
-                request.session.clientData.tgid = null;
+                console.log(d)
+                if (request.session.clientData) 
+                    request.session.clientData.tgid = null;
                 request.session.save();
                 
                 return response.status(200).json({status: 'ok', rowId: res[0]});
