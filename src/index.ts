@@ -27,7 +27,7 @@ export const app = express();
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
-app.set('trust proxy', 1);
+app.set('trust proxy', 2);
 app.use(cors({credentials: true}));
 
 app.use(session({
