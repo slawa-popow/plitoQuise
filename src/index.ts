@@ -31,6 +31,16 @@ export const db = new Db(mysqlc);
 app.use(cors({credentials: true, origin: ['/', 
     '/startquize', '/sendquizdata']}));
 
+app.use(session({
+  name: 'sos',
+  secret: secret,
+  unset: 'keep',
+  store: mysqlc.sessionStore,
+  saveUninitialized: false,
+  resave: true,
+  cookie: {maxAge: 800000, secure: true, httpOnly: false, }
+}));
+
 app.use(express.static(path.join(__dirname, '../public'))); 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars'); 
@@ -41,15 +51,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // const expiryOffset = 1*24*60*60*1000; // +1 day
 
-app.use(session({
-  name: 'sos',
-	secret: secret,
-  unset: 'keep',
-	store: mysqlc.sessionStore,
-  saveUninitialized: false,
-	resave: false,
-  cookie: {maxAge: 800000, secure: true, sameSite: 'none', httpOnly: true, }
-}));
 
 
 
