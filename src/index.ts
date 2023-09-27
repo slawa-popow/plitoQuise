@@ -23,12 +23,12 @@ dotenv.config();
 
 export const app = express();
 
-app.use(cors({credentials: true, origin: 'https://plitochka-quiz.vercel.app'}));
 
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
 
+app.use(cors({credentials: true, origin: 'https://plitochka-quiz.vercel.app'}));
 
 app.use(express.static(path.join(__dirname, '../public'))); 
 app.engine('handlebars', engine());
