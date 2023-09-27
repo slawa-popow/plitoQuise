@@ -27,7 +27,7 @@ export const app = express();
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
-app.use(cors({credentials: true, }));
+app.use(cors({credentials: true, origin: true }));
 app.set('trust proxy', 1);
 
 app.use(session({
@@ -38,7 +38,7 @@ app.use(session({
   store: mysqlc.sessionStore,
   saveUninitialized: true,
   resave: false,
-  cookie: {maxAge: 800000, secure: true, httpOnly: true, }
+  cookie: {maxAge: 800000, secure: true, sameSite: 'none' }
 }));
 
 app.use(express.static(path.join(__dirname, '../public'))); 
