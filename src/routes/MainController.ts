@@ -39,6 +39,7 @@ class MainController {
 
 
     async sendQuizData(request: Request, response: Response) {
+        
         const sessionData = request.session;
         console.log('sendQuizData ',  request.session)
         const data = request.body as QuizeSendData;
@@ -56,7 +57,8 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
-                if (sessionData.clientData && sessionData.clientData.tgid != '#')
+                console.log('session before gdoc(): ', sessionData);
+                if (sessionData.clientData && sessionData.clientData.tgid === '#')
                     await gdoc(res[0], d);
                 
                 return response.status(200).json({status: 'ok', rowId: res[0]});
