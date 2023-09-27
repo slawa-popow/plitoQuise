@@ -56,6 +56,7 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
+                
                 await gdoc(res[0], d);
                 console.log(d)
                 if (request.session.clientData) 
