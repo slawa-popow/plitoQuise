@@ -39,15 +39,15 @@ class MainController {
 
 
     async sendQuizData(request: Request, response: Response) {
-        const sessionData = request.session.clientData;
+        const sessionData = request.session;
         console.log('sendQuizData ',  request.session)
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
-        if (data && sessionData.tgid ) {
-            if (sessionData.tgid != '#') {
+        if (data && sessionData.clientData && sessionData.clientData.tgid ) {
+            if (sessionData.clientData.tgid != '#') {
                 isFrom = 'telegram';
-                data.telegram = sessionData.tgid;
+                data.telegram = sessionData.clientData.tgid;
             } else { isFrom = 'web'; }
             data.isFrom = isFrom;
             const curdate = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow"}); 
