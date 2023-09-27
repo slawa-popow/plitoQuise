@@ -17,7 +17,7 @@ class MainController {
                 request.session.clientData = {tgid: '#' }
             } else
                 request.session.clientData = {tgid: tgid}
-            request.session.save();
+            
             console.log('getIndexPage ', request.session)
         } catch (e) {console.log('try-catch getIndexpage ', e)}
 
@@ -27,8 +27,7 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) {
-        const ds = request.session.clientData || '';
-        request.session.clientData = {tgid: ds};
+        
         console.log('startQuizes ',  request.session); 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
