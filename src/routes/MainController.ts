@@ -56,12 +56,8 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
-                
-                await gdoc(res[0], d);
-                console.log(d)
-                if (request.session.clientData) 
-                    request.session.clientData.tgid = null;
-                request.session.save();
+                if (sessionData.clientData && sessionData.clientData.tgid != '#')
+                    await gdoc(res[0], d);
                 
                 return response.status(200).json({status: 'ok', rowId: res[0]});
 
