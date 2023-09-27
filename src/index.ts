@@ -46,7 +46,7 @@ app.use(session({
 	store: mysqlc.sessionStore,
   saveUninitialized: true,
 	resave: true,
-  cookie: {maxAge: 600000, httpOnly: true}
+  cookie: {maxAge: 600000, httpOnly: false}
 }));
 
 
