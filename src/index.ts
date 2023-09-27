@@ -23,7 +23,7 @@ dotenv.config();
 
 export const app = express();
 
-app.use(cors({credentials: true, origin: true}));
+app.use(cors({credentials: true, origin: '*'}));
 
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
@@ -42,8 +42,8 @@ app.use(session({
   name: 'sos',
 	secret: secret,
 	store: mysqlc.sessionStore,
-  saveUninitialized: true,
-	resave: true,
+  saveUninitialized: false,
+	resave: false,
   cookie: {maxAge: 600000, httpOnly: false}
 }));
 

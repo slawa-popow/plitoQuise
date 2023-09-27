@@ -27,12 +27,6 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) { 
-        try {
-            const sessionData = request.session.clientData;
-            request.session.clientData = sessionData; 
-            request.session.save();      
-        } catch (e) { console.log('try-catch startQuizes ', e) }
-
         console.log('startQuizes ',  request.session); 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
@@ -61,7 +55,7 @@ class MainController {
                 console.log('session before gdoc(): ', sessionData);
                 if (sessionData.clientData && sessionData.clientData.tgid === '#')
                     await gdoc(res[0], d);
-                
+                                 
                 return response.status(200).json({status: 'ok', rowId: res[0]});
 
             }
