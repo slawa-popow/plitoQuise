@@ -23,7 +23,7 @@ dotenv.config();
 
 export const app = express();
 
-app.use(cors({credentials: true, origin: '*'}));
+app.use(cors({credentials: true}));
 
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();

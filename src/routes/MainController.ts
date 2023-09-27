@@ -27,10 +27,8 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) {
-        request.session.reload(()=>{
-            const cd = request.session.clientData;
-            console.log('reload session: ', cd)
-        }); 
+        const ds = request.session.clientData || '';
+        request.session.clientData = {tgid: ds};
         console.log('startQuizes ',  request.session); 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
