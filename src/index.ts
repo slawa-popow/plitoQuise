@@ -28,8 +28,8 @@ const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
 
-app.use(cors({credentials: true, origin: ['https://plitochka-quiz.vercel.app', 
-    'https://plitochka-quiz.vercel.app/startquize', 'https://plitochka-quiz.vercel.app/sendquizdata']}));
+app.use(cors({credentials: true, origin: ['/', 
+    '/startquize', '/sendquizdata']}));
 
 app.use(express.static(path.join(__dirname, '../public'))); 
 app.engine('handlebars', engine());
@@ -39,7 +39,7 @@ app.set('views', __dirname + '/../views');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); 
 
-const expiryOffset = 1*24*60*60*1000; // +1 day
+// const expiryOffset = 1*24*60*60*1000; // +1 day
 
 app.use(session({
   name: 'sos',
@@ -48,7 +48,7 @@ app.use(session({
 	store: mysqlc.sessionStore,
   saveUninitialized: false,
 	resave: false,
-  cookie: {expires: new Date(Date.now() + expiryOffset), secure: true, sameSite: 'none', httpOnly: true, }
+  cookie: {maxAge: 800000, secure: true, sameSite: 'none', httpOnly: true, }
 }));
 
 
