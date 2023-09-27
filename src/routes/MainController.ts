@@ -15,10 +15,11 @@ class MainController {
             const tgid = request.query.tgid;
             if (!tgid) {
                 request.session.clientData = {tgid: '#' }
-            } else
+            } else {
                 request.session.clientData = {tgid: tgid}
-                request.session.save();
-            console.log('getIndexPage ', request.session)
+            }
+            request.session.save();
+            console.log('getIndexPage ', request.session, request.sessionID)
         } catch (e) {console.log('try-catch getIndexpage ', e)}
 
         return response.status(200).render('index', {
@@ -27,8 +28,8 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) {
-        
-        console.log('startQuizes ',  request.session); 
+        const sess = request.session;
+        console.log('startQuizes ',  sess, request.sessionID); 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
     }
