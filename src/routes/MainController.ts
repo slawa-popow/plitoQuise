@@ -27,7 +27,7 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) {
-        request.session = request.session.reload(function() {});
+        request.session.reload(function() {});
         console.log('startQuizes ',  request.session); 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
