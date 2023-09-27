@@ -23,7 +23,7 @@ dotenv.config();
 
 export const app = express();
 
-app.use(cors({credentials: true}));
+app.use(cors({credentials: true, origin: 'https://plitochka-quiz.vercel.app'}));
 
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
@@ -41,10 +41,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
   name: 'sos',
 	secret: secret,
+  unset: 'keep',
 	store: mysqlc.sessionStore,
   saveUninitialized: false,
 	resave: true,
-  cookie: {path: '/', httpOnly: false}
+  cookie: {maxAge: 600000, secure: false}
 }));
 
 
