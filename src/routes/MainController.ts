@@ -38,7 +38,7 @@ class MainController {
     async sendQuizData(request: Request, response: Response) {
         
         const sessionData = request.session;
-        console.log('sendQuizData ',  request.session)
+        console.log('sendQuizData ', request.body, request.session)
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
