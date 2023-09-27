@@ -27,17 +27,17 @@ export const app = express();
 const secret = process.env.SECRET || '123';
 export const mysqlc = new MysqlClient();
 export const db = new Db(mysqlc);
-app.set('trust proxy', 1);
 app.use(cors({credentials: true, }));
+app.set('trust proxy', 1);
 
 app.use(session({
   name: 'sos',
   secret: secret,
-  proxy: true,
-  unset: 'keep',
+   
+   
   store: mysqlc.sessionStore,
-  saveUninitialized: false,
-  resave: true,
+  saveUninitialized: true,
+  resave: false,
   cookie: {maxAge: 800000, secure: true, httpOnly: true, }
 }));
 
