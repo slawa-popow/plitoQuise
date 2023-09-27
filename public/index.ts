@@ -18,7 +18,6 @@ btnStart?.addEventListener('click', async() => {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({})
     });  
     // window.location.href = '/startquize';
     
