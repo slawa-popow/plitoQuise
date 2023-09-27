@@ -27,12 +27,6 @@ class MainController {
 
 
     async startQuizes(request: Request, response: Response) { 
-        try {
-            const sessionData = request.session.clientData;
-            request.session.clientData = sessionData; 
-            request.session.save();      
-        } catch (e) { console.log('try-catch startQuizes ', e) }
-
         console.log('startQuizes ',  request.session); 
         return response.status(200).render('runsteps', {
             layout: 'main_steps', }); 
