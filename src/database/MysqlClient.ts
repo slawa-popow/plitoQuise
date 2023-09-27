@@ -118,7 +118,7 @@ export class MysqlClient implements DbClient {
                 const arrdata = [
                     data.clients_id, 
                     data.isFrom, 
-                    data.name, 
+                    data.name || "", 
                     '', 
                     data.phone, 
                     data.color_fence_block, 
