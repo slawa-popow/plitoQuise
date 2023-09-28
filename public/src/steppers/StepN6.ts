@@ -54,7 +54,7 @@ export class StepN6 extends Step {
          if (this.form) {
             for (let el of this.form.elements) {
                 if (el instanceof HTMLInputElement && el.type === "text" ) {
-                    this.stepData[el.name] = el.value;
+                    this.stepData[el.name] = (el.value === '') ? '1' : el.value;
                 }
             }
          }

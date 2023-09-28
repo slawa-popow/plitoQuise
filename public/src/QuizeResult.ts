@@ -246,7 +246,7 @@ export class QuizeResult {
             else if (sname === 'step4')
                 sendData.height_fence = parseFloat(sdata.height_zabor || '');
             else if (sname === 'step5')
-                sendData.total_lenght_fence = parseFloat(sdata.length_zabora || '0');
+                sendData.total_lenght_fence = parseFloat(sdata.length_zabora || '1');
             else if (sname === 'step6')
                 sendData.lenght_between_colls = parseFloat(sdata.length_between_stolbami_zabora || '');
             else if (sname === 'step7')
