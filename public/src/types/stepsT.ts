@@ -23,6 +23,7 @@ export interface Variant5 {
     imgSrc: string;
     titleRadioGroup: string;
     nameRadioGroup: string;
+    dataLabel ?: string;
     radios: string[];
 }
 

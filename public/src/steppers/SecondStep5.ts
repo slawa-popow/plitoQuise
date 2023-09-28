@@ -9,24 +9,27 @@ export class SecondStep5 extends Step {
     domData: StepsSelectData5 = {
         idForm: 'form-step-s5',
         variants: [
-            {
-                imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
-                titleRadioGroup: 'Вторые откатные ворота (выбрать длину)',
-                nameRadioGroup: 'second_otkatnie',
-                radios: ['не надо', '3,5 м', '4 м', '4,5 м', '5 м', ]
-            },
-            {
-                imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
-                titleRadioGroup: 'Вторые распашные ворота (выбрать длину)',
-                nameRadioGroup: 'second_raspashnie',
-                radios: ['не надо', '3,5 м', '4 м', '4,5 м', ]
-            },
-            {
-                imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
-                titleRadioGroup: 'Вторая калитка (выбрать ширину)',
-                nameRadioGroup: 'second_kalitka',
-                radios: ['не надо', '1 м', '1,2 м', ]
-            },
+            // {
+            //     imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
+            //     titleRadioGroup: 'Вторые откатные ворота (выбрать длину)',
+            //     nameRadioGroup: 'second_vorota',
+            //     dataLabel: 'second_otkatnie',
+            //     radios: ['3,5 м', '4 м', '4,5 м', '5 м', ]
+            // },
+            // {
+            //     imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
+            //     titleRadioGroup: 'Вторые распашные ворота (выбрать длину)',
+            //     nameRadioGroup: 'second_vorota',
+            //     dataLabel: 'second_raspashnie',
+            //     radios: [ '3,5 м', '4 м', '4,5 м', ]
+            // },
+            // {
+            //     imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
+            //     titleRadioGroup: 'Вторая калитка (выбрать ширину)',
+            //     nameRadioGroup: 'second_kalitka',
+            //     dataLabel: 'second_kalitka',
+            //     radios: [ '1 м', '1,2 м', ]
+            // },
         ],
     };
 
@@ -60,13 +63,21 @@ export class SecondStep5 extends Step {
         this.bodyScrollTop();
     }
 
+    clearStepData() {
+        this.stepData = {};
+    }
+
     selectData(): void {
         
          if (this.form) {
+            this.clearStepData();
             for (let el of this.form.elements) {
                 if (el instanceof HTMLInputElement && el.type === "radio" ) {
                     if (el.checked) { 
-                        this.stepData[el.name] = el.value;
+                        if (el.dataset) {
+                            const alias = el.dataset.alias || ''; // data-alias="..." в domStep5.ts setAttribure input type=radio
+                            this.stepData[alias] = el.value;
+                        }
                      }
                 }
             }

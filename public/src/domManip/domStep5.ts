@@ -1,4 +1,4 @@
-import { StepsSelectData5 } from "../types/stepsT";
+import { StepsSelectData5, Variant5 } from '../types/stepsT';
  
 
 
@@ -7,7 +7,7 @@ export function domStep5(domData: StepsSelectData5): HTMLFormElement {
     form.setAttribute('id', domData.idForm);
 
     for (let vars of domData.variants) {
-        const block = createDiv5(vars.imgSrc, vars.titleRadioGroup, vars.nameRadioGroup, vars.radios, domData.idForm);
+        const block = createDiv5(vars, domData.idForm);
         form.appendChild(block);
     }
 
@@ -16,7 +16,12 @@ export function domStep5(domData: StepsSelectData5): HTMLFormElement {
 
 
 
-function createDiv5(imgsrc: string, titleRadio: string, nameRadioG: string, radios: string[], id: string): HTMLElement {
+function createDiv5(vars: Variant5, id: string): HTMLElement {
+    const imgsrc = vars.imgSrc;
+    const titleRadio = vars.titleRadioGroup;
+    const nameRadioG: string = vars.nameRadioGroup;
+    const radios: string[] = vars.radios;
+    const alias = vars.dataLabel || '';
     const div = document.createElement('div');
     div.classList.add('div-main-rgroup');
 
@@ -42,6 +47,7 @@ function createDiv5(imgsrc: string, titleRadio: string, nameRadioG: string, radi
         rinput.setAttribute('type', 'radio');
         rinput.setAttribute('id', `${id}-rg-${i}`);
         rinput.setAttribute('name', nameRadioG);
+        rinput.setAttribute('data-alias', alias);
         rinput.setAttribute('value', r);
         rlabel.setAttribute('for', `${id}-rg-${i}`);
         rlabel.textContent = r;

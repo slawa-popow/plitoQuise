@@ -13,6 +13,7 @@ export class HowManyGates extends Step {
                 imgSrc: '',
                 titleRadioGroup: '',
                 nameRadioGroup: 'how_many_gates',
+                dataLabel: 'how_many_gates',
                 radios: ['1', '2']
             },
             

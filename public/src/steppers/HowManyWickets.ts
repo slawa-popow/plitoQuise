@@ -13,6 +13,7 @@ export class HowManyWickets extends Step {
                 imgSrc: '',
                 titleRadioGroup: '',
                 nameRadioGroup: 'how_many_wickets',
+                dataLabel: 'how_many_wickets',
                 radios: ['1', '2']
             },
             

@@ -94,7 +94,7 @@ export abstract class Step {
         if (this.form ) { 
             for (let elem of this.form.elements) {
                 if (elem instanceof HTMLInputElement && elem.type === "radio" && 
-                    (elem.value === this.stepData[elem.name] || elem.value === this.stepData.variant )) {
+                    (elem.value === this.stepData[elem.dataset.alias || ''] || elem.value === this.stepData.variant )) {
                         elem.checked = true;
                     } 
                 if (elem instanceof HTMLInputElement && elem.type === "text" && this.stepData[elem.name]) {

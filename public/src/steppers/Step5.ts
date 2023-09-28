@@ -12,20 +12,23 @@ export class Step5 extends Step {
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
                 titleRadioGroup: 'Откатные ворота (выбрать длину)',
-                nameRadioGroup: 'otkatnie',
-                radios: ['3,5 м', '4 м', '4,5 м', '5 м', 'не надо']
+                nameRadioGroup: 'vorota',
+                dataLabel: 'otkatnie',
+                radios: ['3,5 м', '4 м', '4,5 м', '5 м',]
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
                 titleRadioGroup: 'Распашные ворота (выбрать длину)',
-                nameRadioGroup: 'raspashnie',
-                radios: ['3,5 м', '4 м', '4,5 м', 'не надо']
+                nameRadioGroup: 'vorota',
+                dataLabel: 'raspashnie',
+                radios: ['3,5 м', '4 м', '4,5 м',]
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
                 titleRadioGroup: 'Калитка (выбрать ширину)',
                 nameRadioGroup: 'kalitka',
-                radios: ['1 м', '1,2 м', 'не надо']
+                dataLabel: 'kalitka',
+                radios: ['1 м', '1,2 м',]
             },
         ],
     };
@@ -63,10 +66,14 @@ export class Step5 extends Step {
     selectData(): void {
         
          if (this.form) {
+            this.stepData = {};
             for (let el of this.form.elements) {
                 if (el instanceof HTMLInputElement && el.type === "radio" ) {
                     if (el.checked) { 
-                        this.stepData[el.name] = el.value;
+                        if (el.dataset) {
+                            const alias = el.dataset.alias || ''; // data-alias="..." в domStep5.ts setAttribure input type=radio
+                            this.stepData[alias] = el.value;
+                        }
                      }
                 }
             }

@@ -13,6 +13,7 @@ export class StepN5 extends Step {
                 imgSrc: 'styles/stepsimg/nashi/s2/hz.webp',
                 titleRadioGroup: '',
                 nameRadioGroup: 'height_zabor',
+                dataLabel: 'height_zabor',
                 radios: ['1,6 м', '1,8 м', '2,0 м']
             },
             

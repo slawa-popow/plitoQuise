@@ -1,6 +1,7 @@
 import { disableButton } from "./domManip/domStep1";
 import { blockedNextStep, deleteErrorBlock } from "./domManip/domStep2";
 import { settings } from "./settings";
+import { SecondStep5 } from "./steppers/SecondStep5";
 import { Step } from "./steppers/Step";
 import { StepFinish } from "./steppers/StepFinish";
 import { SendData } from "./types/stepsT";
@@ -115,6 +116,52 @@ export class QuizeResult {
             this.counter = 0
         } else {
             this.currentStep!.selectData();
+
+            const howWicket = this.findStepByName('step7');
+            const howGates = this.findStepByName('step8');
+
+            if (this.counter > 0 && this.steps[this.counter - 1].nameStep === 'step99') {
+                const s99 = this.steps[this.counter - 1] as SecondStep5;
+               if (howGates && howWicket) {
+                const dataG = howGates.getStepData();
+                const dataW = howWicket.getStepData();
+                s99.domData.variants.length = 0; 
+                s99.clearStepData();
+                if ((+dataG['how_many_gates'] > 1)) {
+                    s99.domData.variants.unshift(
+                        {
+                            imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
+                            titleRadioGroup: 'Вторые откатные ворота (выбрать длину)',
+                            nameRadioGroup: 'second_vorota',
+                            dataLabel: 'second_otkatnie',
+                            radios: ['3,5 м', '4 м', '4,5 м', '5 м', ]
+                        },
+                        {
+                            imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
+                            titleRadioGroup: 'Вторые распашные ворота (выбрать длину)',
+                            nameRadioGroup: 'second_vorota',
+                            dataLabel: 'second_raspashnie',
+                            radios: [ '3,5 м', '4 м', '4,5 м', ]
+                        },
+                    );
+                } 
+                if ((+dataW['how_many_wickets']) > 1) {
+                    s99.domData.variants.push(
+                        {
+                            imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
+                            titleRadioGroup: 'Вторая калитка (выбрать ширину)',
+                            nameRadioGroup: 'second_kalitka',
+                            dataLabel: 'second_kalitka',
+                            radios: [ '1 м', '1,2 м', ]
+                        },
+                    );
+                }
+                if ( ((+dataW['how_many_wickets']) === 1) && (+dataG['how_many_gates'] === 1) ) {
+                    this.counter--;
+                }
+               }
+            }
+
             this.counter--;
             if (this.counter >= 0) {
                 this.currentStep = this.steps[this.counter];
@@ -132,7 +179,8 @@ export class QuizeResult {
      * вперед
      */
     nextStep() {
-         
+        console.clear(); 
+        this.steps.forEach(v=>{console.log(v.nameStep, v.getStepData())})
         if (this.counter >= this.steps.length-1) {
            return;  
         } else {
@@ -143,6 +191,51 @@ export class QuizeResult {
                 this.currentStep?.cnt!.appendChild(err);
                 deleteErrorBlock(this.currentStep!.cnt, err, 2000);
                 return;
+            }
+
+            const howWicket = this.findStepByName('step7');
+            const howGates = this.findStepByName('step8');
+
+            if (this.steps[this.counter + 1].nameStep === 'step99') {
+                const s99 = this.steps[this.counter + 1] as SecondStep5;
+               if (howGates && howWicket) {
+                const dataG = howGates.getStepData();
+                const dataW = howWicket.getStepData();
+                s99.domData.variants.length = 0;
+                s99.clearStepData(); 
+                if ((+dataG['how_many_gates'] > 1)) {
+                    s99.domData.variants.unshift(
+                        {
+                            imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
+                            titleRadioGroup: 'Вторые откатные ворота (выбрать длину)',
+                            nameRadioGroup: 'second_vorota',
+                            dataLabel: 'second_otkatnie',
+                            radios: ['3,5 м', '4 м', '4,5 м', '5 м', ]
+                        },
+                        {
+                            imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
+                            titleRadioGroup: 'Вторые распашные ворота (выбрать длину)',
+                            nameRadioGroup: 'second_vorota',
+                            dataLabel: 'second_raspashnie',
+                            radios: [ '3,5 м', '4 м', '4,5 м', ]
+                        },
+                    );
+                } 
+                if ((+dataW['how_many_wickets']) > 1) {
+                    s99.domData.variants.push(
+                        {
+                            imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
+                            titleRadioGroup: 'Вторая калитка (выбрать ширину)',
+                            nameRadioGroup: 'second_kalitka',
+                            dataLabel: 'second_kalitka',
+                            radios: [ '1 м', '1,2 м', ]
+                        },
+                    );
+                }
+                if ( ((+dataW['how_many_wickets']) === 1) && (+dataG['how_many_gates'] === 1) ) {
+                    this.counter++;
+                }
+               }
             }
             
             this.counter++;
@@ -157,6 +250,15 @@ export class QuizeResult {
             }
         }
         
+    }
+
+    // найти шаг в массиве по имени
+    findStepByName(nameStep: string): Step | null {
+        for (let s of this.steps) {
+            if (s.nameStep === nameStep)
+                return s;
+        }
+        return null;
     }
 
 
