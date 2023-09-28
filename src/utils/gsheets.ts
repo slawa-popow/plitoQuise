@@ -56,18 +56,24 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
             date: d.date || '',
             country: ''
         });
-    } catch (e) { console.log(e);return}
+    } catch (e) { console.log('err gdoc()');return}
     
       
 }
 
 function formatGates(wg: string[], wsg: string[]): string[] {
     // откатные: 0/распашные: 4,5
-    const awg = wg.filter(v => {
+    const awg = wg.map(v => {
         return (parseFloat(v) > 0) ? v : null;
+    })
+    .filter(fv => {
+        return (fv) ? fv : null;
     });
-    const awsg = wsg.filter(w => {
+    const awsg = wsg.map(w => {
         return (parseFloat(w) > 0) ? w : null;
+    }) .filter(fw => {
+        return (fw) ? fw : null;
     });
+    console.log(awg, awsg)
     return [awg.join(' '), awsg.join(' ')]
 }

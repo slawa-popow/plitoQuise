@@ -19,7 +19,7 @@ class MainController {
                 request.session.clientData = {tgid: tgid}
             }
             request.session.save();
-            console.log('getIndexPage ', request.session, request.sessionID)
+             
         } catch (e) {console.log('try-catch getIndexpage ', e)}
 
         return response.status(200).render('index', {
@@ -38,7 +38,7 @@ class MainController {
     async sendQuizData(request: Request, response: Response) {
         
         const sessionData = request.session;
-        console.log('sendQuizData ', request.body, request.session)
+        
         const data = request.body as QuizeSendData;
         let isFrom: string = '';
         
@@ -54,7 +54,7 @@ class MainController {
             const res = await db.writeQuizData(data);
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
-                console.log('session before gdoc(): ', sessionData);
+                 
                 if (sessionData.clientData && sessionData.clientData.tgid === '#')
                     await gdoc(res[0], d);
                                  

@@ -54,7 +54,7 @@ export const telegram = (() => {
                     try {
                         await axios.get(sendUrl);
                     }
-                    catch (e) {console.log('error in tgMessage() axios run: ', e); continue;}
+                    catch (e) {console.log('error in tgMessage() axios run: '); continue;}
                 }
             }
         }
