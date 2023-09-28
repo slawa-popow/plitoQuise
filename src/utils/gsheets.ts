@@ -46,11 +46,11 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
             total_lenght_fence: d.total_lenght_fence,
             lenght_between_colls: d.lenght_between_colls,
             how_many_wickets: d.how_many_wickets,
-            width_wicket: wg, 
-            width_second_wicket: wsg,
+            width_wicket: d.width_wicket, 
+            width_second_wicket: d.width_second_wicket,
             how_many_gates: d.how_many_gates,
-            width_gates: d.width_gates,
-            width_second_gates: d.width_second_gates,
+            width_gates: wg,
+            width_second_gates: wsg,
             telegram: d.telegram || '',
             city: d.city,
             date: d.date || '',
@@ -74,6 +74,6 @@ function formatGates(wg: string[], wsg: string[]): string[] {
     }) .filter(fw => {
         return (fw) ? fw : null;
     });
-    console.log(awg, awsg)
+    
     return [awg.join(' '), awsg.join(' ')]
 }
