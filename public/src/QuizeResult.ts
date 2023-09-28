@@ -246,18 +246,18 @@ export class QuizeResult {
             else if (sname === 'step4')
                 sendData.height_fence = parseFloat(sdata.height_zabor || '');
             else if (sname === 'step5')
-                sendData.total_lenght_fence = parseFloat(sdata.length_zabora || '0');
+                sendData.total_lenght_fence = parseFloat(sdata.length_zabora || '');
             else if (sname === 'step6')
                 sendData.lenght_between_colls = parseFloat(sdata.length_between_stolbami_zabora || '');
             else if (sname === 'step7')
                 sendData.how_many_wickets = parseInt(sdata.how_many_wickets || '');
             else if (sname === 'step9') {
-                sendData.width_gates = `откатные: ${parseFloat((sdata.otkatnie != 'не надо')? sdata.otkatnie:'0')}/распашные: ${parseFloat((sdata.raspashnie != 'не надо')?sdata.raspashnie:'0')}`;
-                sendData.width_wicket = parseFloat((sdata.kalitka != 'не надо')?sdata.kalitka:'0');
+                sendData.width_gates = `откатные: ${parseFloat((sdata.otkatnie != 'не надо')? sdata.otkatnie:'')}/распашные: ${parseFloat((sdata.raspashnie != 'не надо')?sdata.raspashnie:'')}`;
+                sendData.width_wicket = parseFloat((sdata.kalitka != 'не надо')?sdata.kalitka:'');
             }
             else if (sname === 'step99') {
-                sendData.width_second_gates = `откатные: ${parseFloat((sdata.second_otkatnie != 'не надо')? sdata.second_otkatnie:'0')}/распашные: ${parseFloat((sdata.second_raspashnie != 'не надо')?sdata.second_raspashnie:'0')}`; 
-                sendData.width_second_wicket = parseFloat((sdata.second_kalitka != 'не надо')?sdata.second_kalitka:'0'); 
+                sendData.width_second_gates = `откатные: ${parseFloat((sdata.second_otkatnie != 'не надо')? sdata.second_otkatnie:'')}/распашные: ${parseFloat((sdata.second_raspashnie != 'не надо')?sdata.second_raspashnie:'')}`; 
+                sendData.width_second_wicket = parseFloat((sdata.second_kalitka != 'не надо')?sdata.second_kalitka:''); 
             }
             else if (sname === 'step8') {
                 sendData.how_many_gates = parseInt(sdata.how_many_gates || '');
