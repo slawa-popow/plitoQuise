@@ -13,19 +13,19 @@ export class SecondStep5 extends Step {
                 imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
                 titleRadioGroup: 'Вторые откатные ворота (выбрать длину)',
                 nameRadioGroup: 'second_otkatnie',
-                radios: ['не надо', '3.5 м', '4 м', '4.5 м', '5 м', ]
+                radios: ['не надо', '3,5 м', '4 м', '4,5 м', '5 м', ]
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
                 titleRadioGroup: 'Вторые распашные ворота (выбрать длину)',
                 nameRadioGroup: 'second_raspashnie',
-                radios: ['не надо', '3.5 м', '4 м', '4.5 м', ]
+                radios: ['не надо', '3,5 м', '4 м', '4,5 м', ]
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
                 titleRadioGroup: 'Вторая калитка (выбрать ширину)',
                 nameRadioGroup: 'second_kalitka',
-                radios: ['не надо', '1 м', '1.2 м', ]
+                radios: ['не надо', '1 м', '1,2 м', ]
             },
         ],
     };

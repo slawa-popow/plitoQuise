@@ -25,7 +25,7 @@ export class Step5 extends Step {
                 imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
                 titleRadioGroup: 'Калитка (выбрать ширину)',
                 nameRadioGroup: 'kalitka',
-                radios: ['1 м', '1.2 м', 'не надо']
+                radios: ['1 м', '1,2 м', 'не надо']
             },
         ],
     };

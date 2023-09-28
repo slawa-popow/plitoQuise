@@ -13,7 +13,7 @@ export class StepN7 extends Step {
                 imgSrc: '',
                 titleRadioGroup: '',
                 nameRadioGroup: 'length_between_stolbami_zabora',
-                radios: ['2.0 м', '2.5 м', '2.75 м', '3.0 м']
+                radios: ['2,0 м', '2,5 м', '2,75 м', '3,0 м']
             },
             
         ],
