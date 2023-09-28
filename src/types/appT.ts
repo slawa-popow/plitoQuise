@@ -30,9 +30,9 @@ export interface QuizeSendData {
     width_wicket: string | number;
     width_second_wicket: string | number;
     how_many_gates: string | number;
-    width_gates: string | number;
+    width_gates: string;
     type_gates ?: string;
-    width_second_gates: string | number;
+    width_second_gates: string;
     type_second_gates ?: string;
     var_comp_coll : string;
     fill_between_coll : string;

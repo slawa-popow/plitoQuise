@@ -25,6 +25,11 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
         
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['Квиз от Славяна'];
+
+        const arrWg = d.width_gates.split('/');
+        const arrWsg = d.width_second_gates.split('/');
+        const [wg, wsg] = formatGates(arrWg, arrWsg);
+
         await sheet.addRow({ 
             dbrow_id: idrow,
             clients_id: d.clients_id || '',
@@ -41,8 +46,8 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
             total_lenght_fence: d.total_lenght_fence,
             lenght_between_colls: d.lenght_between_colls,
             how_many_wickets: d.how_many_wickets,
-            width_wicket: d.width_wicket, 
-            width_second_wicket: d.width_second_wicket,
+            width_wicket: wg, 
+            width_second_wicket: wsg,
             how_many_gates: d.how_many_gates,
             width_gates: d.width_gates,
             width_second_gates: d.width_second_gates,
@@ -54,4 +59,15 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
     } catch (e) { console.log(e);return}
     
       
+}
+
+function formatGates(wg: string[], wsg: string[]): string[] {
+    // откатные: 0/распашные: 4,5
+    const awg = wg.filter(v => {
+        return (parseFloat(v) > 0) ? v : null;
+    });
+    const awsg = wsg.filter(w => {
+        return (parseFloat(w) > 0) ? w : null;
+    });
+    return [awg.join(' '), awsg.join(' ')]
 }
