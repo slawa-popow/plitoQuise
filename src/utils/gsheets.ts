@@ -25,7 +25,6 @@ export async function gdoc(idrow: string, d: QuizeSendData) {
         
         await doc.loadInfo();
         const sheet = doc.sheetsByTitle['Квиз от Славяна'];
-        
         await sheet.addRow({ 
             dbrow_id: idrow,
             clients_id: d.clients_id || '',
