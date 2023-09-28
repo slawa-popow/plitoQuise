@@ -13,13 +13,13 @@ export class Step5 extends Step {
                 imgSrc: 'styles/stepsimg/s5/it-3-1.jpg',
                 titleRadioGroup: 'Откатные ворота (выбрать длину)',
                 nameRadioGroup: 'otkatnie',
-                radios: ['3.5 м', '4 м', '4.5 м', '5 м', 'не надо']
+                radios: ['3,5 м', '4 м', '4,5 м', '5 м', 'не надо']
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-2.jpg',
                 titleRadioGroup: 'Распашные ворота (выбрать длину)',
                 nameRadioGroup: 'raspashnie',
-                radios: ['3.5 м', '4 м', '4.5 м', 'не надо']
+                radios: ['3,5 м', '4 м', '4,5 м', 'не надо']
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
