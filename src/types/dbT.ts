@@ -6,7 +6,7 @@ export interface DbClient {
     checkClient(uidClient: string): Promise<boolean>;
     wQuizData(data: QuizeSendData): Promise<string[]>;
     getRowData(rowId: string): Promise<QuizeSendData[]>;
-    getManagers(): Promise<Admins[]>;
+    getManagers(): Promise<Admins[]>; 
 }
 
 
