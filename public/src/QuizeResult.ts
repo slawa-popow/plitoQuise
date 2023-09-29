@@ -346,11 +346,11 @@ export class QuizeResult {
             if (sname === 'step3')
                 sendData.color_fence_block = sdata.variant || '';
             else if (sname === 'step4')
-                sendData.height_fence = parseFloat(sdata.height_zabor || '');
+                sendData.height_fence = ('' + parseFloat(sdata.height_zabor || '')).replace('.', ',');
             else if (sname === 'step5')
-                sendData.total_lenght_fence = parseFloat(sdata.length_zabora || '1');
+                sendData.total_lenght_fence = ('' + parseFloat(sdata.length_zabora || '1')).replace('.', ',');
             else if (sname === 'step6')
-                sendData.lenght_between_colls = parseFloat(sdata.length_between_stolbami_zabora || '');
+                sendData.lenght_between_colls = ('' + parseFloat(sdata.length_between_stolbami_zabora || '')).replace('.', ',');
             else if (sname === 'step7')
                 sendData.how_many_wickets = parseInt(sdata.how_many_wickets || '');
             else if (sname === 'step9') {
