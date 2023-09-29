@@ -14,7 +14,7 @@ export class StepN5 extends Step {
                 titleRadioGroup: '',
                 nameRadioGroup: 'height_zabor',
                 dataLabel: 'height_zabor',
-                radios: ['1,6 м', '1,8 м', '2,0 м']
+                radios: ['1.6 м', '1.8 м', '2.0 м']
             },
             
         ],
