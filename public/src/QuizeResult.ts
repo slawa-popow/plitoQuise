@@ -149,10 +149,10 @@ export class QuizeResult {
                     s99.domData.variants.push(
                         {
                             imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
-                            titleRadioGroup: 'Вторая калитка (выбрать ширину)',
+                            titleRadioGroup: 'Вторая калитка (выбрать ширину м)',
                             nameRadioGroup: 'second_kalitka',
                             dataLabel: 'second_kalitka',
-                            radios: [ '1 м', '1,2 м', ]
+                            radios: [ '1', '1,2', ]
                         },
                     );
                 }
@@ -226,10 +226,10 @@ export class QuizeResult {
                     s99.domData.variants.push(
                         {
                             imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
-                            titleRadioGroup: 'Вторая калитка (выбрать ширину)',
+                            titleRadioGroup: 'Вторая калитка (выбрать ширину м)',
                             nameRadioGroup: 'second_kalitka',
                             dataLabel: 'second_kalitka',
-                            radios: [ '1 м', '1,2 м', ]
+                            radios: [ '1', '1,2', ]
                         },
                     );
                 }

@@ -1,2 +1,2 @@
 (()=>{"use strict";({112:function(n,e){var t=this&&this.__awaiter||function(n,e,t,i){return new(t||(t=Promise))((function(o,c){function a(n){try{u(i.next(n))}catch(n){c(n)}}function r(n){try{u(i.throw(n))}catch(n){c(n)}}function u(n){var e;n.done?o(n.value):(e=n.value,e instanceof t?e:new t((function(n){n(e)}))).then(a,r)}u((i=i.apply(n,e||[])).next())}))};Object.defineProperty(e,"__esModule",{value:!0}),window.Telegram.WebApp.ready(),window.Telegram.WebApp.expand();const i=document.getElementById("btn_start_calc");null==i||i.addEventListener("click",(()=>t(void 0,void 0,void 0,(function*(){window.location.href="/startquize"}))))}})[112](0,{})})();
-//# sourceMappingURL=appj.js.map
+//# sourceMappingURL=appb.js.map

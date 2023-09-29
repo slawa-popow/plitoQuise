@@ -4,8 +4,8 @@ const webpack = require('webpack'); // для подключения jquery
 module.exports = {
 
   entry: {
-    appj: __dirname + '/public/index.ts',
-    stepsj: __dirname + '/public/steps.ts',
+    appb: __dirname + '/public/index.ts',
+    stepsb: __dirname + '/public/steps.ts',
   },
   
   output: {

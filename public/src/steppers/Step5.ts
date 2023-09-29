@@ -25,10 +25,10 @@ export class Step5 extends Step {
             },
             {
                 imgSrc: 'styles/stepsimg/s5/it-3-3.jpg',
-                titleRadioGroup: 'Калитка (выбрать ширину)',
+                titleRadioGroup: 'Калитка (выбрать ширину м)',
                 nameRadioGroup: 'kalitka',
                 dataLabel: 'kalitka',
-                radios: ['1 м', '1,2 м',]
+                radios: ['1', '1,2',]
             },
         ],
     };
