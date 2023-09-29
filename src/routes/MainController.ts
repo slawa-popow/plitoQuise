@@ -55,7 +55,7 @@ class MainController {
             if (Array.isArray(res) && res.length > 0) {
                 const d = await telegram.tgMessage(res[0]);
                  
-                if (sessionData.clientData && sessionData.clientData.tgid === '#')
+                if (sessionData.clientData && sessionData.clientData.tgid === '#') 
                     await gdoc(res[0], d);
                                  
                 return response.status(200).json({status: 'ok', rowId: res[0]});

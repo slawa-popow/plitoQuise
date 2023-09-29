@@ -166,6 +166,7 @@ export class QuizeResult {
             if (this.counter >= 0) {
                 this.currentStep = this.steps[this.counter];
                 this.selectNavButtonCurrentStep(this.currentStep!);
+                
                 this.currentStep.step();
             } else { 
                 this.counter = 0; 
@@ -179,7 +180,7 @@ export class QuizeResult {
      * вперед
      */
     nextStep() {
-        console.clear(); 
+        
         this.steps.forEach(v=>{console.log(v.nameStep, v.getStepData())})
         if (this.counter >= this.steps.length-1) {
            return;  
@@ -242,8 +243,7 @@ export class QuizeResult {
             if (this.counter <= this.steps.length) {
                 this.currentStep = this.steps[this.counter];
                 this.selectNavButtonCurrentStep(this.currentStep);
-                
-                 this.currentStep.step(); 
+                this.currentStep.step(); 
                 
             } else { 
                 this.counter = this.steps.length-1;
@@ -326,7 +326,7 @@ export class QuizeResult {
         this.sendErrMessage();
         
         for (let s of this.steps) {
-            if (s.form!.id === 'form-step-finish') {
+            if (s.form && s.form!.id === 'form-step-finish') {
                 const formfin = s.form;
                 if (formfin) {
                     for (let elem of formfin) {
@@ -354,12 +354,12 @@ export class QuizeResult {
             else if (sname === 'step7')
                 sendData.how_many_wickets = parseInt(sdata.how_many_wickets || '');
             else if (sname === 'step9') {
-                sendData.width_gates = `откатные: ${parseFloat((sdata.otkatnie != 'не надо')? sdata.otkatnie:'0')}/распашные: ${parseFloat((sdata.raspashnie != 'не надо')?sdata.raspashnie:'0')}`;
-                sendData.width_wicket = parseFloat((sdata.kalitka != 'не надо')?sdata.kalitka:'0');
+                sendData.width_gates = (sdata.otkatnie) ? `${sdata.otkatnie} откатные` : (sdata.raspashnie) ?  `${sdata.raspashnie} распашные` : "";
+                sendData.width_wicket = sdata.kalitka;
             }
             else if (sname === 'step99') {
-                sendData.width_second_gates = `откатные: ${parseFloat((sdata.second_otkatnie != 'не надо')? sdata.second_otkatnie:'0')}/распашные: ${parseFloat((sdata.second_raspashnie != 'не надо')?sdata.second_raspashnie:'0')}`; 
-                sendData.width_second_wicket = parseFloat((sdata.second_kalitka != 'не надо')?sdata.second_kalitka:'0'); 
+                sendData.width_second_gates = (sdata.second_otkatnie) ? `${sdata.second_otkatnie} вторые_откатные` : (sdata.second_raspashnie) ?  `${sdata.second_raspashnie} вторые_распашные` : ""; 
+                sendData.width_second_wicket = sdata.second_kalitka; 
             }
             else if (sname === 'step8') {
                 sendData.how_many_gates = parseInt(sdata.how_many_gates || '');
