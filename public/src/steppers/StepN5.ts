@@ -10,7 +10,7 @@ export class StepN5 extends Step {
         idForm: 'form-step-N-5',
         variants: [
             {
-                imgSrc: 'styles/stepsimg/nashi/s2/hz.webp',
+                imgSrc: '',
                 titleRadioGroup: '',
                 nameRadioGroup: 'height_zabor',
                 dataLabel: 'height_zabor',

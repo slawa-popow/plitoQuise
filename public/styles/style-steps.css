@@ -94,12 +94,19 @@ body {
   background: #02a95e;
 }
 
+.exfooter-steps {
+  background-color: #dfdfdf57;
+  border-top: 1px solid #dfdfdfe0;
+  position: sticky; 
+  bottom: 0;
+}
 
 .footer-steps {
     display: flex;
+    position: sticky;
     flex-flow: row wrap;
     justify-content: space-around;
-    padding: 10px 0 20px 0;
+    padding: 4px 0 4px 0;
 }
 
 
@@ -133,8 +140,8 @@ body {
 
 .content-container {
     border: 1px solid rgba(233, 232, 232, 0.712);
-    height: 450px;
-    overflow-y: auto;
+    height: auto;
+     
 }
 
 .image-gallery {
@@ -248,18 +255,19 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-bottom: 70px;
   }
 
   .step-6-radgroup label {
-    margin-top: 30px;
+    margin-bottom: 60px;
     margin-left: 20px;
   }
 
   .step-6-style img {
     margin: 0 auto;
-    object-fit: fill;
+    object-fit: contain;
     padding: 10px;
-    max-width: 500px;
+   width: 100%;
     height: 300px;
     border-radius: 5px;
   }
@@ -267,7 +275,7 @@ body {
 
   .step-2-area-div {
     display: flex;
-    margin-top: 30px;
+    margin-bottom: 60px;
     flex-flow: column wrap;
   }
 

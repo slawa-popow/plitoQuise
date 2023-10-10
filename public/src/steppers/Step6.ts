@@ -10,7 +10,7 @@ export class Step6 extends Step {
         idForm: 'form-step-6',
         variants: [
             {
-                imgSrc: 'styles/stepsimg/s6/it-5-1.jpg',
+                imgSrc: '',
                 titleRadioGroup: '',
                 nameRadioGroup: 'isAutmatic',
                 radios: ['Да', 'Нет']

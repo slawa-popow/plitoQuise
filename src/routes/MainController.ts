@@ -30,7 +30,7 @@ class MainController {
     async startQuizes(request: Request, response: Response) {
         const sess = request.session;
         console.log('startQuizes ',  sess, request.sessionID); 
-        return response.status(200).render('runsteps', {
+        return response.status(200).render('runstep', {
             layout: 'main_steps', }); 
     }
 

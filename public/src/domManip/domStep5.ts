@@ -103,10 +103,13 @@ export function domStep6(domData: StepsSelectData5): HTMLFormElement {
 
     domData.variants.forEach((v) => {
         const div = document.createElement('div');
-        const img = document.createElement('img');
-        div.classList.add('step-6-style')
-        img.setAttribute('src', v.imgSrc);
-        div.appendChild(img);
+        if (v.imgSrc != '') {
+            const img = document.createElement('img');
+            img.setAttribute('src', v.imgSrc);
+            div.appendChild(img);
+        }
+        
+        div.classList.add('step-6-style');
 
         const divGroup = document.createElement('div');
         divGroup.classList.add('step-6-radgroup');
